@@ -2,6 +2,9 @@
     # permite escrever comentarios em uma linha
 
 # formatacao do Print
+import copy
+
+
 print("mostra algo na tela") #String em aspas duplas ou simples
 print(12,10)
 print(22,4,2022, sep="/")# SEP significa o separador entre o 22, 04 e 2005
@@ -402,3 +405,206 @@ Namespaces são uma grande ideia -- vamos fazer mais dessas!
 
 
 """--------------------------------------------comandos intermediarios-------------------------------------------------------------------"""
+
+# def -> funcao serve para estrutura o codigo, depois voce pode chama - la no codigo
+def funcao():
+    print("ola")
+    print("bom dia")
+
+# e tambem podemos colocar uma variavel para que seja passada
+def saudacao(nome):
+    print(f"seu nome é{nome}")
+
+saudacao("otavio")
+
+# definicao da funcao que tem 2 parametros
+def soma (x,y):
+    print(x+y)
+
+#execucao
+soma(1,2)
+soma(y=2,x=1)# neste caso usamos o argumentos com parametros invertidos eles estando nomeados
+
+# is not nao é
+if z is not None:
+    print("x nao é vazio, nao esta vazio")
+
+# escopo global pode alcancar qualquer variavel 
+global z 
+# escopo local pode acessa apenas no escopo da funcao
+
+# return retorna um valor
+
+def multi (n,m):
+    return(n*m)
+
+retorna = multi(1,2) # podemos colocar o resultado em uma variavel
+print(retorna)
+
+#*args sao argumentos que podemos colocar varios argumentos na funcao
+def arg(*args):
+    print(arg)
+arg(1,2,3,4,5,6)
+
+# sum serve para somar
+print(sum(1,2))
+
+# Dicionários em Python (tipo dict)
+# Dicionários são estruturas de dados do tipo
+# par de "chave" e "valor".
+# Chaves podem ser consideradas como o "índice"
+# que vimos na lista e podem ser de tipos imutáveis
+# como: str, int, float, bool, tuple, etc.
+# O valor pode ser de qualquer tipo, incluindo outro
+# dicionário.
+# Usamos as chaves - {} - ou a classe dict para criar
+# dicionários.
+# Imutáveis: str, int, float, bool, tuple
+# Mutável: dict, list
+# pessoa = {
+#     'nome': 'Luiz Otávio',
+#     'sobrenome': 'Miranda',
+#     'idade': 18,
+#     'altura': 1.8,
+#     'endereços': [
+#         {'rua': 'tal tal', 'número': 123},
+#         {'rua': 'outra rua', 'número': 321},
+#     ]
+# }
+# pessoa = dict(nome='Luiz Otávio', sobrenome='Miranda')
+pessoa = {
+    'nome': 'Luiz Otávio',
+    'sobrenome': 'Miranda',
+    'idade': 18,
+    'altura': 1.8,
+    'endereços': [
+        {'rua': 'tal tal', 'número': 123},
+        {'rua': 'outra rua', 'número': 321},
+    ],
+}
+# print(pessoa, type(pessoa))
+print(pessoa['nome'])
+print(pessoa['sobrenome'])
+
+print()
+
+for chave in pessoa:
+    print(chave, pessoa[chave])
+
+# del exclui 
+
+# Métodos úteis dos dicionários em Python
+# len - quantas chaves
+print(len(pessoa))
+# keys - iterável com as chaves
+print(pessoa.keys())
+# values - iterável com os valores
+print(pessoa.values())
+# items - iterável com chaves e valores
+print(pessoa.items())
+# setdefault - adiciona valor se a chave não existe
+print(pessoa.setdefault("idade",0))
+# copy - retorna uma cópia rasa (shallow copy)
+print(pessoa.copy())
+print(copy.deecopy(pessoa))
+# get - obtém uma chave
+print(pessoa.get("nome"))
+# pop - Apaga um item com a chave especificada (del)
+print(pessoa.pop("nome"))
+# popitem - Apaga o último item adicionado
+print(pessoa.popitem())
+# update - Atualiza um dicionário com outro
+print(pessoa.update({"sexo": "masculino",})) # aqui ele vai adicionar o sexo ao dicionario pessoa
+
+# Sets - Conjuntos em Python (tipo set)
+# Conjuntos são ensinados na matemática
+# https://brasilescola.uol.com.br/matematica/conjunto.htm
+# Representados graficamente pelo diagrama de Venn
+# Sets em Python são mutáveis, porém aceitam apenas
+# tipos imutáveis como valor interno.
+# Criando um set
+# set(iterável) ou {1, 2, 3}
+# s1 = set('Luiz')
+# s1 = set()  # vazio
+# s1 = {'Luiz', 1, 2, 3}  # com dados
+# Sets são eficientes para remover valores duplicados
+# de iteráveis.
+# - Seus valores serão sempre únicos;
+# - Não aceitam valores mutáveis;
+# - não tem índexes;
+# - não garantem ordem;
+# - são iteráveis (for, in, not in)
+# l1 = [1, 2, 3, 3, 3, 3, 3, 1]
+# s1 = set(l1)
+# l2 = list(s1)
+# s1 = {1, 2, 3}
+# print(3 not in s1)
+# for numero in s1:
+#     print(numero)
+# Métodos úteis:
+# add, update, clear, discard
+s1 = set()
+s1.add('Luiz')
+s1.add(1)
+s1.update(('Olá mundo', 1, 2, 3, 4))
+# s1.clear()
+s1.discard('Olá mundo')
+s1.discard('Luiz')
+print(s1)
+# print(s1)
+
+# Operadores úteis:
+# união | união (union) - Une
+# intersecção & (intersection) - Itens presentes em ambos
+# diferença - Itens presentes apenas no set da esquerda
+# diferença simétrica ^ - Itens que não estão em ambos
+s1 = {1, 2, 3}
+s2 = {2, 3, 4}
+s3 = s1 | s2
+s3 = s1 & s2
+s3 = s2 - s1
+s3 = s1 ^ s2
+print(s3)
+
+
+# lista.sort() ordena a lista
+lista_frases.sort()
+
+# lista.sort(reverse=True) ordena a lista ao contrario
+lista_frases.sort(reverse=True)
+
+# lista.sorte(Key= nome da funcao)# serve para voce informar como quer que a lista seja ordenada
+lista = [
+    {'nome': 'otavio', 'sobrenome' : 'marcelo'}
+    {'nome': 'gabriel', 'sobrenome' : 'vitor'}
+    {'nome': 'odair', 'sobrenome' : 'costa'}
+]
+def ordena(item):
+    return item['nome']
+
+lista.sort(key=ordena) # neste sorte ele vai ordenar por nome
+
+#lambda
+def executa(funcao,*args):
+    return funcao(*args)
+
+print(
+    executa(
+        lambda x,y: x+y # lambda nao usa nome é passa tudo sem parentese e o return é na mesma linha
+    )
+)
+
+# para extrair uma lista em outra lista usamos **
+pessoa_completa = {**lista,**lista_a} # pegamos a lista e a lista_a e colocamo em outra lista
+
+# **kwargs serve para dar elementos nomeados variaveis tipo args
+def nome (*args,**kwargs): # aque podemos colocar varios elemneots nomeados para a funcao
+    ...
+
+# comprehension é forma rapida de criar lista
+lista_numero = [numero for numero in range(10)] # ele vai adicionar 10 numeros a lista, mas temos que passar o variavel na esquerda para criar a lista
+
+# filtrar listar
+        #n mapeamento             filtro  
+lista_2 = [n for  n in range(10) if n < 5] # o filtro em depois do for neste caso o if
+  
