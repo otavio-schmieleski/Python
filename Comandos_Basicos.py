@@ -3,6 +3,7 @@
 
 # formatacao do Print
 import copy
+import sys
 
 
 print("mostra algo na tela") #String em aspas duplas ou simples
@@ -608,3 +609,127 @@ lista_numero = [numero for numero in range(10)] # ele vai adicionar 10 numeros a
         #n mapeamento             filtro  
 lista_2 = [n for  n in range(10) if n < 5] # o filtro em depois do for neste caso o if
   
+# Valores Truthy e Falsy, Tipos Mutáveis e Imutáveis
+# Mutáveis [] {} set()
+# Imutáveis () "" 0 0.0 None False range(0, 10)
+lista = []
+dicionario = {}
+conjunto = set()
+tupla = ()
+string = ''
+inteito = 0
+flutuante = 0.0
+nada = None
+falso = False
+intervalo = range(0)
+
+
+def falsy(valor):
+    return 'falsy'if not valor else 'truthy'
+
+
+print(f'TESTE', falsy('TESTE'))
+print(f'{lista=}', falsy(lista))
+print(f'{dicionario=}', falsy(dicionario))
+print(f'{conjunto=}', falsy(conjunto))
+print(f'{tupla=}', falsy(tupla))
+print(f'{string=}', falsy(string))
+print(f'{inteito=}', falsy(inteito))
+print(f'{flutuante=}', falsy(flutuante))
+print(f'{nada=}', falsy(nada))
+print(f'{falso=}', falsy(falso))
+print(f'{intervalo=}', falsy(intervalo))
+
+# dir todos os metodos de uma variavel, hasattr verefica se um metodo esta dentro da variavel
+# getattr pega o metodo
+
+# iterables, iterators trabalham com iteraveis
+
+# generator expression ele nao salva na memoria ele espera voce espera o que voce pedir
+generator = (n for n in range(100)) # isto é um generator ele salvou na memoria
+print(sys.getsizeof(generator)) # este mostra o tamanho em bytes do generator
+print(generator)
+
+def generator(n=0):
+    yield n # ele pausa a funcao
+
+#try 
+try:
+    ...
+except IndexError: # coloca o  nome do erro para saber qual esta caindo
+    ...
+
+try:
+    print('ABRIR ARQUIVO')
+    8/0
+finally: #o finally mais executar mesmo que o try seja executado
+    print('FECHAR ARQUIVO')
+
+# raise serve para criar um erro
+
+print(123)
+raise ValueError('Deu erro') # ele vai printar este erro na tela
+
+# modulos
+#inteiro - import nome_modulo
+
+# Módulos padrão do Python (import, from, as e *)
+# https://docs.python.org/3/py-modindex.html
+# inteiro - import nome_modulo
+# Vantagens: você tem o namespace do módulo
+# Desvantagens: nomes grandes
+# import sys
+
+platform = 'A MINHA'
+print(sys.platform)
+print(platform)
+
+# partes - from nome_modulo import objeto1, objeto2
+# Vantagens: nomes pequenos
+# Desvantagens: Sem o namespace do módulo
+# from sys import exit, platform
+
+print(platform)
+
+# alias 1 - import nome_modulo as apelido
+import sys as s
+
+sys = 'alguma coisa'
+print(s.platform)
+print(sys)
+
+
+# alias 2 - from nome_modulo import objeto as apelido
+from sys import exit as ex #renomeando o exit
+from sys import platform as pf # renomeando a plataform
+
+print(pf)
+
+# Vantagens: você pode reservar nomes para seu código
+# Desvantagens: pode ficar fora do padrão da linguagem
+
+# má prática - from nome_modulo import *
+# Vantagens: importa tudo de um módulo
+# Desvantagens: importa tudo de um módulo
+# from sys import exit, platform
+
+print(platform)
+exit()
+
+# modulos
+# o primeiro modo que o python acha é o __main__
+print('este o modulo', __name__)
+#voce pode importar o modulo
+import exercicios_aula54 # aqui ele importou o arquivo que eu passei como parametro
+
+from exercicios_aula54 import calculando_numero # importou  do exercico a variavel calculando e posso usar no programa
+print(exercicios_aula54.calculando_numero)
+
+# recarregar modulos
+import importlib 
+importlib.reload(exercicio_aula54) # serve para recarregar o modulo
+
+# importando pack ou pastas os 3 jeitos de importar
+from sys import path
+import Imc_exercicio_aula29.modulo
+from Imc_exercicio_aula29.modulo import altura # importou a variavel altura para está projeto
