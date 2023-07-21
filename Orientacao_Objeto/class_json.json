@@ -1,0 +1,32 @@
+[
+  {
+    "marca": "FIAT",
+    "modelo": "UNO",
+    "ano": 2023,
+    "cor": "branco"
+  },
+  {
+    "marca": "MERCEDES BENS",
+    "modelo": "CLS 300",
+    "ano": 2022,
+    "cor": "PRETA"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "UNO",
+    "ano": 2023,
+    "cor": "branco"
+  },
+  {
+    "marca": "MERCEDES BENS",
+    "modelo": "CLS 300",
+    "ano": 2022,
+    "cor": "PRETA"
+  },
+  {
+    "marca": "MERCEDES BENS",
+    "modelo": "CLS 300",
+    "ano": 2022,
+    "cor": "PRETA"
+  }
+]
