@@ -1,9 +1,11 @@
-class Pessoas:
-    ano_atual = 2023 # isto é um atributo extremamente da class
-    def __init__(self,nome,idade):
-        self.nome='nome'
-    def get_ano_nascimentos(self):
-        return Pessoas.ano_atual - self.idade
+class CallMe:
+    def __init__(self, phone):
+        self.phone = phone
 
-p2 = Pessoas('otavio',18)
-print(p2.nome,p2.get_ano_nascimentos())
+    def __call__(self, nome):
+        print(nome, 'está chamando', self.phone)
+        return 2134
+
+
+call1 = CallMe('23945876545')
+call1('Luiz Otávio')

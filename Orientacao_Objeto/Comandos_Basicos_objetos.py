@@ -109,3 +109,154 @@ p1, p2 = Produto('Caneta', 1.20), Produto('Camiseta', 20)
 carrinho.inserir_produtos(p1, p2)
 carrinho.listar_produtos()
 print(carrinho.total())
+
+
+class Pessoa: # aqui fazemos a class mae a mestre de todas as outras
+    def __init__(self,nome,sobrenome):
+        self.nome = nome
+        self.sobrenome = sobrenome
+
+class Cliente(Pessoa): # aqui eu usei a class pessoa passando no parentese a class que dejeso buscar 
+    ...
+
+print(Cliente('otavio','marcelo')) # aqui ele ja pediu as informacoes da class pessoa em cliente
+
+#super() é sobre chamar a class mae para alterar o metodo 
+# abstratc import abstract 
+# a abstracao nao deve ser utilizada
+#@abstractmethod serve para fazer algo abstrato
+# from abC import ABC, abstractmethod para importar a abstracao
+# polimorfismo
+from abc import ABC, abstractmethod # IMPORTANDO METODO ABSTRATO
+
+class Notificacao(ABC): # aqui chama o metodo da abstracao tipo a biblioteca
+    def __init__(self,mensagem):
+        self.mensagem = mensagem
+    
+    @abstractmethod
+    def enviar(self): # aqui o metodo enviar nao pode ser acessado por aqui, mas sim em outra class
+        ...
+
+class NotificacaoEmail(Notificacao):
+    def enviar(self): 
+        print('email:enviando',self.mensagem)
+
+class NotificacaoSms(Notificacao):
+    def enviar(self): 
+        print('SMS:enviando',self.mensagem)
+
+NotificacaoSms('bom dia')
+NotificacaoEmail('oi')
+
+# para lancar uma execao colocamos tipo
+class MeuError(Exception): # aqui para fazermos algum erro para o usuario
+    ...
+class Erro(MeuError):
+    Exception.add_note('mais um erro') # paraa adicionar outra nota de erro no terminal
+    raise MeuError('erro') # aqui ele manda para o terminar a mensagem de erro
+Erro()
+
+# __dunder__ metodos, cuidar os parametros que deve ser passados
+# Exemplo de uso de dunder methods (métodos mágicos)
+# __lt__(self,other) - self < other
+# __le__(self,other) - self <= other
+# __gt__(self,other) - self > other
+# __ge__(self,other) - self >= other
+# __eq__(self,other) - self == other
+# __ne__(self,other) - self != other
+# __add__(self,other) - self + other
+# __sub__(self,other) - self - other
+# __mul__(self,other) - self * other
+# __truediv__(self,other) - self / other
+# __neg__(self) - -self
+# __str__(self) - str
+# __repr__(self) - str
+class Ponto:
+    def __init__(self, x, y): # serve para inicializar a class
+        self.x = x
+        self.y = y
+
+    def __repr__(self): # serve para sabermos qual é o tipo de dado de determinado atributo e exibilo na tela
+        class_name = type(self).__name__
+        return f'{class_name}(x={self.x!r}, y={self.y!r})' #colocamos o !r para ele passar as string com '-'
+
+    def __add__(self, other): # o__add__ faz junção de dois atributos
+        novo_x = self.x + other.x
+        novo_y = self.y + other.y
+        return Ponto(novo_x, novo_y)
+
+    def __gt__(self, other): #__gt__ faz a comparaccao entre ds atributos e retorna boolean
+        resultado_self = self.x + self.y
+        resultado_other = other.x + other.y
+        return resultado_self > resultado_other
+
+    def __enter__(self): # serve para iniciar algo que tenha que entra ou conectar e depoism precise fechar com o exit
+        print('abrindo um arquivo')
+    def __exit__(self): #  fecha o __enter__ 
+        print('fechando o arquivo')
+
+
+if __name__ == '__main__': 
+    p1 = Ponto(4, 2)  # 6
+    p2 = Ponto(6, 4)  # 10
+    p3 = p1 + p2
+    print(p3)
+    print('P1 é maior que p2', p1 > p2)
+    print('P2 é maior que p1', p2 > p1)
+
+
+# funcoes decoradoras
+
+def meu_repr(self): # faz a funcao rper
+    class_name = self.__class__.__name__
+    class_dict = self.__dict__
+    class_repr = f'{class_name}({class_dict})'
+    return class_repr
+
+
+def adiciona_repr(cls):
+    cls.__repr__ = meu_repr # chama a funcao repr
+    return cls
+
+
+@adiciona_repr # aqui adiciona o repr aqui decora o metodo
+class Time:
+    def __init__(self, nome):
+        self.nome = nome
+
+
+@adiciona_repr
+class Planeta:
+    def __init__(self, nome):
+        self.nome = nome
+
+
+brasil = Time('Brasil')
+portugal = Time('Portugal')
+
+terra = Planeta('Terra')
+marte = Planeta('Marte')
+
+print(brasil)
+print(portugal)
+
+print(terra)
+print(marte)
+
+# Método especial __call__
+# callable é algo que pode ser executado com parênteses
+# Em classes normais, __call__ faz a instância de uma
+# classe "callable".
+class CallMe:
+    def __init__(self, phone):
+        self.phone = phone
+
+    def __call__(self, nome): # aqui voce coloca o __Call__ para fazer ser igual a um executavel
+        print(nome, 'está chamando', self.phone)
+        return 2134
+
+
+call1 = CallMe('23945876545')
+call1('Luiz Otávio') # e pode ser chamado deste jeito agora
+
+# class decoradora
