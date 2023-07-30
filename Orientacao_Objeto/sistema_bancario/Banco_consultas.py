@@ -40,6 +40,8 @@ def Listar_Usuarios_Cadastrados():
     list(banco)
     for i in banco:
         print(i)
+
+
 def Depositar(valor,conta):
     try:
         deposito = float(input('Informe o valor a depositar'))
@@ -57,6 +59,7 @@ def Depositar(valor,conta):
                 item['saldo'] = resultado
         with open(CAMINHO_ARQUIVO,'w+',encoding='utf8') as arquivo:
             json.dump(Banco_dados,arquivo,ensure_ascii=False,indent=1)
+
 
 def Sacar(valor,conta):
     try:
@@ -85,6 +88,7 @@ def Consulta_Saldo(conta):
     for item in Banco_dados: #faz a pesquisa no banco de dados
         if conta == item['conta']:
             print(f"Seu saldo é R$ {item['saldo']}")
+
 
 def Consulta_Informacoes(conta):
     with open(CAMINHO_ARQUIVO,'r',encoding='utf8') as arquivo: # abre o arquivo e pega as informacoes
