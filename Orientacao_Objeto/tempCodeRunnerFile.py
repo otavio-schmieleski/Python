@@ -1,11 +1,5 @@
-class CallMe:
-    def __init__(self, phone):
-        self.phone = phone
+from collections import namedtuple
 
-    def __call__(self, nome):
-        print(nome, 'está chamando', self.phone)
-        return 2134
-
-
-call1 = CallMe('23945876545')
-call1('Luiz Otávio')
+Carta = namedtuple('carro',['valor','naipe'])
+as_espadas = Carta('a','espada')
+print(as_espadas)

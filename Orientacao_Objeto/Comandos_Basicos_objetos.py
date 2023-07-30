@@ -260,3 +260,10 @@ call1 = CallMe('23945876545')
 call1('Luiz Otávio') # e pode ser chamado deste jeito agora
 
 # class decoradora
+
+# namedtuples tuplas imutaveis
+from collections import namedtuple
+
+Carta = namedtuple('carro',['valor','naipe'])# no valor podemos colocar outra coisa
+as_espadas = Carta('a','espada')# assim configura uma namedtuple com dados
+print(as_espadas)
