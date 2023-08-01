@@ -1,3 +1,5 @@
+from datetime import datetime
+from pytz import timezone
 # criando class
 # uma classe pode gerar varias instancias
 # na class o self é a mesma da class
@@ -267,3 +269,12 @@ from collections import namedtuple
 Carta = namedtuple('carro',['valor','naipe'])# no valor podemos colocar outra coisa
 as_espadas = Carta('a','espada')# assim configura uma namedtuple com dados
 print(as_espadas)
+
+# para executar apenas no arquivo
+if __name__ == 'main':
+    print('executando apenas neste bloco sem executrar em outro modulo')
+
+
+
+
+

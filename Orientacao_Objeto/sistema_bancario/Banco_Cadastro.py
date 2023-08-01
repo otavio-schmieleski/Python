@@ -38,10 +38,19 @@ class Cadastro():
         except:
             print('Informe uma Idade Valida')
             Cadastro()
-
-        self.sexo = input('Informe seu sexo: ')
+        try:
+            self.sexo = input('Informe seu sexo: ')
+            if self.sexo != '' and self.sexo != ' ':
+                ...
+        except:
+            print('Informe um sexo valido ou [M]masculino ou [F]femenino')
+            Cadastro()
         self.conta = contas
-        self.saldo = float(input('Informe seu valor de Deposito Inicial: R$ '))
+        try:
+            self.saldo = float(input('Informe seu valor de Deposito Inicial: R$ '))
+        except:
+            print('informe um valor válido')
+            Cadastro()
 
 
         
