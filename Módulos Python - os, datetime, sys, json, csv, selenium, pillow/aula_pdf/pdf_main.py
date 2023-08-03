@@ -1,0 +1,1 @@
+# pdf usar PyPDF2
