@@ -28,3 +28,30 @@ import qrcode
 
 imagem_qr = qrcode.make("https://github.com/otavio-schmieleski") # esta criando a imagem do qrcode com o link
 imagem_qr.save("qrcode_python.png") # para salvar no qrcode passa a extensao do arquivo
+
+# ler codigo de barras
+
+from asposebarcode import Recognition, Assist
+# # Setting License to read Barcode
+# licenseReadBarCode = Assist.License()
+# licenseReadBarCode.setLicense("Aspose.Total.lic")
+
+# tipos de codificacao que vai ser lido
+decodeTypes=[Recognition.DecodeType.PDF_417, Recognition.DecodeType.DATA_MATRIX,
+Recognition.DecodeType.QR,Recognition.DecodeType.CODE_39_EXTENDED, 
+Recognition.DecodeType.CODE_128, Recognition.DecodeType.RM_4_SCC, Recognition.DecodeType.EAN_8]
+
+ # qual a imagem a ler
+BarcodeReader =  Recognition.BarCodeReader("codigo_barraArroz.png",None, decodeTypes)
+
+# o reusltado da vereficacao
+results = BarcodeReader.readBarCodes()
+
+# Print the read Barcodes information
+print("ReadSimpleExample:")
+i = 0
+while (i < len(results)):
+    print(i)
+    print("code text: " + results[i].getCodeText())
+    print("code type: " + results[i].getCodeTypeName())
+    i += 1
