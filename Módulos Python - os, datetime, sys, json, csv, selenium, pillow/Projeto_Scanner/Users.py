@@ -2,9 +2,11 @@ import json
 from pathlib import Path
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 
-#with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
-#    file = json.load(file)
-#list(file)
+banco = []
+with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+    banco = json.load(file)
+list(banco)
+
 
 class Record_User:
     def __init__(self):
@@ -36,6 +38,12 @@ class Record_User:
         Name()
         Ag()
         Password()
+
+def Banco_de_dados(valor):
+    banco.append(vars(valor))
+    with open(ROOT_FOLDER,'w',encoding='utf-8') as file:
+        json.dump(banco,file,ensure_ascii=False,indent=2)
         
 
-Record_User()
+p1 = Record_User()
+Banco_de_dados(p1)
