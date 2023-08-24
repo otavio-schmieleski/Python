@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="imagens">
+    <file>background.jpeg</file>
+    <file>login.png</file>
+    <file>redifini_senha.png</file>
+  </qresource>
+</RCC>
