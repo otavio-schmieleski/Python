@@ -1,0 +1,17 @@
+[
+  {
+    "name": "mesa",
+    "ag": 2,
+    "cod_barra": "12345698"
+  },
+  {
+    "name": "pc",
+    "ag": 2,
+    "cod_barra": "87654321"
+  },
+  {
+    "name": "not",
+    "ag": 2,
+    "cod_barra": "23568972"
+  }
+]

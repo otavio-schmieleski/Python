@@ -1,0 +1,36 @@
+[
+  {
+    "name": "gabriel",
+    "ag": 2,
+    "password": "5648"
+  },
+  {
+    "name": "otavio",
+    "ag": 2,
+    "password": "2356"
+  },
+  {
+    "name": "odair",
+    "ag": 2,
+    "password": "2354"
+  },
+  {
+    "name": "mareni",
+    "ag": 6,
+    "password": "5894"
+  },
+  {
+    "name": "vitor",
+    "password": "2356"
+  },
+  {
+    "name": "jonata",
+    "ag": 5,
+    "password": "2356"
+  },
+  {
+    "name": "o",
+    "ag": 5,
+    "password": "2356"
+  }
+]
