@@ -20,6 +20,7 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+# tem que lembra de passar no arquivo settings.py no metodo installed passar o home ou nome da pagina
 
 if __name__ == '__main__':
     main()

@@ -19,7 +19,9 @@ from PySide6.QtWidgets import (QApplication, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
     QStackedWidget, QStatusBar, QTableWidget, QTableWidgetItem,
     QVBoxLayout, QWidget)
+from pathlib import Path
 
+ROOT_DIR = Path(__file__).parent / 'logo.jpeg'
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -28,7 +30,8 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(412, 450))
         MainWindow.setMaximumSize(QSize(412, 450))
         icon = QIcon()
-        icon.addFile(u"D:/dowloand/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
+        #icon.addFile(u"D:/dowloand/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
+        icon.addFile(u"C:/Users/otavi/OneDrive/Documentos/Programacao-fullstack/Python/Interface_Grafica/Projeto/imagens/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
         MainWindow.setWindowIcon(icon)
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setIconSize(QSize(100, 100))
