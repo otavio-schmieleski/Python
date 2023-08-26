@@ -1,27 +1,27 @@
-import typing
 from PySide6 import QtCore
 from PySide6.QtWidgets import *
 from PySide6.QtWidgets import QWidget
 from interface_user import Ui_MainWindow
-from Autentic_User import Autentic
 import sys
 from pathlib import Path
 import json
-
+from tst import OpenCVWidget
+from Banco_de_dados_user import Banco_de_dados_salve_user
+from Banco_de_dados_prod import Banco_de_dados_save_produtos
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
 
-try:
-    with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
-        banco = json.load(file)
-    list(banco)
-except FileNotFoundError:
-    pass
 
-class Window(QMainWindow,Ui_MainWindow):
+class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_save_produtos,OpenCVWidget):
     def __init__(self,parent = None):
         super().__init__(parent)
         self.setupUi(self)
+        
+        self.setWindowTitle("OpenCV in PySide6")
+        central_widget = OpenCVWidget()
+        self.setCentralWidget(central_widget)
+
+        self.line_altera_nome.setEnabled(False)
         self.stack_pags.setCurrentIndex(0)
         self.btn_inicial.clicked.connect(self.clicled_btn_iniciar)
         self.btn_option_transferir.clicked.connect(self.clicled_btn_transferir)
@@ -37,18 +37,43 @@ class Window(QMainWindow,Ui_MainWindow):
         self.btn_cadastrar.clicked.connect(self.btn_cadastrar_produtos)
         self.btn_cadastro_user.clicked.connect(self.btn_cadastrar_user)
         self.btn_user_cadastrar.clicked.connect(self.btn_cadastrar_usuario)
+        self.btn_option_user.clicked.connect(self.btn_option_user_admin)
+        self.btn_admin_procurar.clicked.connect(self.btn_admin_procura)
+        self.btn_admin_alterar.clicked.connect(self.btn_alterar)
+        self.btn_salve_user.clicked.connect(self.btn_salvar_alteracao_user)
+        self.btn_admin_del.clicked.connect(self.btn_del_admin)
+        self.btn_admin_salvar.clicked.connect(self.btn_salve_admin)
+        self.btn_admin_voltar.clicked.connect(self.btn_voltar_admin)
+        self.pushButton.clicked.connect(self.btn_cons_procura)
+        self.btn_user_voltar.clicked.connect(self.btn_cadastro_user_volta)
+        self.btn_cad_voltar.clicked.connect(self.btn_cadastro_voltar)
 
     def clicled_btn_iniciar(self):
+        try:
+            with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+                banco = json.load(file)
+            list(banco)
+        except FileNotFoundError:
+            pass
         self.user_informado = self.line_nome.text()
         self.password_informado = self.line_senha.text()
         continua = True
         for user in banco:
-            if self.user_informado == user['self.name'] and self.password_informado == user['password']:
+            if self.user_informado == user['name'] and self.password_informado == user['password']:
+                ag = user['ag']
                 continua = False
+                if ag > 1:
+                    self.btn_cadastro_user.setEnabled(False)
+                    self.btn_option_cadastrar.setEnabled(False)
+                    self.btn_option_transferir.setEnabled(False)
+                    self.btn_option_user.setEnabled(False)
+                else:
+                    ...
+                
         if continua == False:
             self.stack_pags.setCurrentIndex(1)
         else:
-            self.func_aviso('Usuario ou senha incorreto!!!', 'OK',0)
+            self.func_aviso('Usuario ou senha incorreto!!!', 'OK','red',0)
     
     def clicled_btn_transferir(self):
         self.stack_pags.setCurrentIndex(2)
@@ -88,9 +113,9 @@ class Window(QMainWindow,Ui_MainWindow):
                         codigo['ag'] = self.ag
                         with open(ROOT_FOLDER_PRODUTOS, 'w', encoding='utf-8') as file:
                             json.dump(banco_produtos,file,ensure_ascii=False,indent=2)
-                        self.func_aviso('Trasnferencia feita com Sucesso!!','OK',1)
+                        self.func_aviso('Trasnferencia feita com Sucesso!!','OK','green',1)
                 except TypeError and ValueError:
-                    self.func_aviso('Informe uma agencia valida','OK',2)
+                    self.func_aviso('Informe uma agencia valida','OK','red',2)
                     pass
     
     def btn_clicled_option_consulta(self):
@@ -102,7 +127,7 @@ class Window(QMainWindow,Ui_MainWindow):
         except FileNotFoundError:
             pass
         for users in banco:
-            if self.user_informado == users['self.name']:
+            if self.user_informado == users['name']:
                 ag = users['ag']
                 try:
                     with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
@@ -118,13 +143,13 @@ class Window(QMainWindow,Ui_MainWindow):
                 try:
                     for i,item in enumerate(banco_produtos):
                         if ag == item['ag']:
-                            self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['self.name']))
+                            self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
                             self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
                             self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
                     if len(item) == 0:
-                        self.func_aviso('Nada de Imobilizados','OK',1)
+                        self.func_aviso('Nada de Imobilizados','OK','red',1)
                 except:
-                    self.func_aviso('Nada de Imobilizados','OK',1)
+                    self.func_aviso('Nada de Imobilizados','OK','red',1)
 
     def btn_cons_del(self):
         produto_selecionado = self.tlabe_consulta.currentRow()
@@ -138,40 +163,68 @@ class Window(QMainWindow,Ui_MainWindow):
         with open(ROOT_FOLDER_PRODUTOS, 'w', encoding='utf-8') as file:
             json.dump(banco_produtos,file,ensure_ascii=False,indent=2)
         self.btn_clicled_option_consulta()
-        
+    
+    def btn_cons_procura(self):
+        texto = self.lineEdit.text()
+        with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
+            banco_produtos = json.load(file)
+        list(banco_produtos)
+        self.tlabe_consulta.clear()
+        self.tlabe_consulta.setRowCount(len(banco_produtos) + 1)
+        self.tlabe_consulta.setColumnCount(3)
+        self.tlabe_consulta.setItem(0,0,QTableWidgetItem('PRODUTOS'))
+        self.tlabe_consulta.setItem(0,1,QTableWidgetItem('AGENCIA'))
+        self.tlabe_consulta.setItem(0,2,QTableWidgetItem('COD DE BARRAS'))
+        try:
+            for i,item in enumerate(banco_produtos):
+                if texto == item['cod_barra']:
+                    self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
+                    self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                    self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
+            if len(item) == 0:
+                self.func_aviso('Nada de Imobilizados','OK','red',1)
+        except:
+            self.func_aviso('Nada de Imobilizados','OK','red',1)
+
     def btn_cons_salvar_banco(self):
-        self.func_aviso('Salvo com Sucesso!','OK',1)
+        self.func_aviso('Salvo com Sucesso!','OK','green',1)
     
     def btn_cons_voltar_inicio(self):
         self.stack_pags.setCurrentIndex(1)
 
     def btn_cadastro_inicio(self):
         self.stack_pags.setCurrentIndex(4)
+    
+    def btn_cadastro_voltar(self):
+        self.stack_pags.setCurrentIndex(1)
+
+    def btn_cadastro_user_volta(self):
+        self.stack_pags.setCurrentIndex(1)
 
     def btn_cadastrar_produtos(self):
+        self.name = None
+        self.ag = None
+        self.cod_barra = None
         try:
             with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
                 banco_produtos = json.load(file)
             list(banco_produtos)
         except FileNotFoundError:
             pass
-        global P_Name
         # nome do produto para cadastrar
         P_Name = self.line_cad_nome_produto.text()
         if P_Name == "" or P_Name == " " or P_Name =="  " or P_Name == "   ":
-            self.func_aviso('Informe um nome valido','OK',4)
+            self.func_aviso('Informe um nome valido','OK','red',4)
             self.line_cad_nome_produto.clear()
         else:
-            self.self.name = P_Name
-        global P_Ag
+            self.name = P_Name
         try:
             P_Ag = int(self.line_cad_agencia.text())
             if P_Ag >= 1 and P_Ag <= 31: 
                 self.ag = P_Ag
         except TypeError and ValueError:
-            self.func_aviso('Informe uma agencia valida','OK',4)
+            self.func_aviso('Informe uma agencia valida','OK','red',4)
             self.line_cad_agencia.clear()
-        global codigo_barras
         codigo_barras = self.line_cad_cod_barras.text()
         if codigo_barras.isdigit() and len(codigo_barras) == 8:
             continua = True
@@ -179,28 +232,14 @@ class Window(QMainWindow,Ui_MainWindow):
                 if codigo_barras in codigo['cod_barra']:
                     continua = False
             if continua == False:
-                self.func_aviso('Informe um codigo de barras valido','OK',4)
+                self.func_aviso('Informe um codigo de barras valido','OK','red',4)
                 self.line_cad_cod_barras.clear()
             else:
                 self.cod_barra = codigo_barras
                 pass
+        Banco_de_dados_save_produtos(self.name,self.ag,self.cod_barra)
+        self.func_aviso('Cadastro realizado com Sucesso','OK','green',1)
 
-        # armazenando no banco de dados
-        def Banco_de_dados_produtos(valor):
-            banco.append(vars(valor))
-            with open(ROOT_FOLDER_PRODUTOS,'w',encoding='utf-8') as file:
-                json.dump(banco_produtos,file,ensure_ascii=False,indent=2)
-
-        class banco_valores:
-            def __init__(self,valor1,valor2,valor3):
-                self.self.name = valor1
-                self.ag = valor2
-                self.cod_barra = valor3
-
-        if P_Name != None and P_Ag != None and codigo_barras != None:
-            p2 = banco_valores(P_Name,P_Ag,codigo_barras)
-            Banco_de_dados_produtos(p2)
-            self.func_aviso("Produto cadastrado com sucesso!!",'OK',1)
 
     def btn_cadastrar_user(self):
         self.stack_pags.setCurrentIndex(5)
@@ -222,7 +261,7 @@ class Window(QMainWindow,Ui_MainWindow):
             if self.name == usuario['name'] or self.name == "" or self.name == " " or self.name =="  " or self.name == "   ":
                 continua = False
         if continua == False:
-            self.func_aviso('Usuario ja cadastrado','OK',5)
+            self.func_aviso('Usuario ja cadastrado','OK','red',5)
             self.line_user_nome.clear()
         else:
             self.Name = self.name
@@ -231,41 +270,140 @@ class Window(QMainWindow,Ui_MainWindow):
             if self.ag >= 1 and self.ag <= 31:
                 self.Ag = self.ag
             else:
-                self.func_aviso('Agencia invalida','OK',5)
+                self.func_aviso('Agencia invalida','OK','red',5)
                 self.line_user_agencia.clear() 
         except:
-            self.func_aviso('Agencia invalida','OK',5)
+            self.func_aviso('Agencia invalida','OK','red',5)
             self.line_user_agencia.clear()
         try:
             self.password = self.line_user_senha.text()
             if len(self.password) >= 4:
                 self.Password = self.password
             else:
-                self.func_aviso('Senha invalida!','OK',5)
+                self.func_aviso('Senha invalida!','OK','red',5)
                 self.line_user_senha.clear()
         except:
             ...
-        def Banco_de_dados(valor1):
-            banco.append(vars(valor1))
-            with open(ROOT_FOLDER,'w',encoding='utf-8') as file:
-                json.dump(banco,file,ensure_ascii=False,indent=2)
-                
-        class banco_valores:
-            def __init__(self,valor1,valor2,valor3):
-                self.name = valor1
-                self.ag = valor2
-                self.password = valor3
+        Banco_de_dados_salve_user(self.Name,self.Ag,self.Password)
+        self.func_aviso('Cadastro realizado com Sucesso','OK','green',0)
 
-        if self.Name != None and self.Ag != None and self.Password != None:
-            p2 = banco_valores(self.Name,self.Ag,self.Password)
-            Banco_de_dados(p2)
-            self.func_aviso('Cadastro realizado com Sucesso','OK',1)
+    def btn_admin_procura(self):
+        self.line_admin_procurar.setPlaceholderText('Informe o nome a procurar')
+        self.procurado = self.line_admin_procurar.text()
+        try:
+            with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+                banco = json.load(file)
+            list(banco)
+        except FileNotFoundError:
+            pass
+        self.list_admin_user.clear()
+        self.list_admin_user.setRowCount(len(banco) + 1)
+        self.list_admin_user.setColumnCount(3)
+        self.list_admin_user.setItem(0,0,QTableWidgetItem('PRODUTOS'))
+        self.list_admin_user.setItem(0,1,QTableWidgetItem('AGENCIA'))
+        self.list_admin_user.setItem(0,2,QTableWidgetItem('PASSWORD'))
+        for i,usuario in enumerate(banco):
+            if self.procurado == usuario['name']:
+                item = usuario
+                self.list_admin_user.setItem(i+1,0,QTableWidgetItem(item['name']))
+                self.list_admin_user.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                self.list_admin_user.setItem(i+1,2,QTableWidgetItem(item['password']))
 
 
-    def func_aviso(self,mensagem,text_button,id_pags):
+    def btn_option_user_admin(self):
+        self.stack_pags.setCurrentIndex(9)
+        with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+            banco = json.load(file)
+        list(banco)
+        self.list_admin_user.setRowCount(len(banco) + 1)
+        self.list_admin_user.setColumnCount(3)
+        self.list_admin_user.setItem(0,0,QTableWidgetItem('PRODUTOS'))
+        self.list_admin_user.setItem(0,1,QTableWidgetItem('AGENCIA'))
+        self.list_admin_user.setItem(0,2,QTableWidgetItem('PASSWORD'))
+        try:
+            for i,item in enumerate(banco):
+                self.list_admin_user.setItem(i+1,0,QTableWidgetItem(item['name']))
+                self.list_admin_user.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                self.list_admin_user.setItem(i+1,2,QTableWidgetItem(item['password']))
+        except:
+            pass
+
+    def btn_alterar(self):
+        try:
+            with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+                banco = json.load(file)
+            list(banco)
+        except FileNotFoundError:
+            pass
+        self.selecionado = self.list_admin_user.currentRow()
+        self.alterar = banco[self.selecionado -1 ]
+        self.line_altera_nome.setText(self.alterar['name'])
+        self.line_altera_ag.setText(str(self.alterar['ag']))
+        self.line_altera_senha.setText(self.alterar['password'])
+        self.stack_pags.setCurrentIndex(8)
+    
+    def btn_salvar_alteracao_user(self):
+        self.Name = None 
+        self.Ag = None 
+        self.Password = None 
+        with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+            banco = json.load(file)
+        list(banco)
+        self.name = self.line_altera_nome.text()
+        continua = True
+        for usuario in banco:
+            if self.name == "" or self.name == " " or self.name =="  " or self.name == "   ":
+                continua = False
+        if continua == False:
+            self.func_aviso('Usuario ja cadastrado','OK','red',8)
+        else:
+            self.Name = self.name
+        try:
+            self.ag = int(self.line_altera_ag.text())
+            if self.ag >= 1 and self.ag <= 31:
+                self.Ag = self.ag
+            else:
+                self.func_aviso('Agencia invalida','OK','red',8)
+        except:
+            self.func_aviso('Agencia invalida','OK','red',8)
+        try:
+            self.password = self.line_altera_senha.text()
+            if len(self.password) >= 4:
+                self.Password = self.password
+            else:
+                self.func_aviso('Senha invalida!','OK','red',8)
+        except:
+            ...
+        del banco[self.selecionado - 1]
+        with open(ROOT_FOLDER, 'w', encoding='utf-8') as file:
+            json.dump(banco,file,ensure_ascii=False,indent=2)
+        Banco_de_dados_salve_user(self.Name,self.Ag,self.Password)
+        self.btn_option_user_admin()
+        
+    
+    def btn_del_admin(self):
+        selecao = self.list_admin_user.currentRow()
+        try:
+            with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
+                banco = json.load(file)
+            list(banco)
+        except FileNotFoundError:
+            pass
+        del banco[selecao - 1]
+        with open(ROOT_FOLDER, 'w', encoding='utf-8') as file:
+            json.dump(banco,file,ensure_ascii=False,indent=2)
+        self.btn_option_user_admin()
+
+    def btn_salve_admin(self):
+        self.func_aviso('Salvo com Sucesso!','OK','green',1)
+    
+    def btn_voltar_admin(self):
+        self.stack_pags.setCurrentIndex(1)
+
+    def func_aviso(self,mensagem,text_button,color,id_pags):
         self.stack_pags.setCurrentIndex(7)
         self.label_aviso.setText(f'{mensagem}')
-        self.label_aviso.setStyleSheet('font-size: 14px; color: red; text-align: center;')
+        self.label_aviso.setStyleSheet(f'font-size: 14px; color: {color};')
         self.btn_aviso.setText(f'{text_button}')
         self.btn_aviso.clicked.connect(self.clicled_btn_aviso)
         self.id_pag = id_pags
@@ -275,8 +413,8 @@ class Window(QMainWindow,Ui_MainWindow):
         self.line_senha.setText('')
         self.stack_pags.setCurrentIndex(self.id_pag)
 
-
-app = QApplication(sys.argv)
-window = Window()
-window.show()
-sys.exit(app.exec())
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = Window()
+    window.show()
+    sys.exit(app.exec())

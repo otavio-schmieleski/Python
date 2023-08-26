@@ -18,10 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
     QStackedWidget, QStatusBar, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
-from pathlib import Path
+    QWidget)
 
-ROOT_DIR = Path(__file__).parent / 'logo.jpeg'
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -30,19 +28,17 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(412, 450))
         MainWindow.setMaximumSize(QSize(412, 450))
         icon = QIcon()
-        #icon.addFile(u"D:/dowloand/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
-        icon.addFile(u"C:/Users/otavi/OneDrive/Documentos/Programacao-fullstack/Python/Interface_Grafica/Projeto/imagens/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
+        icon.addFile(u"D:/dowloand/logo.jpeg", QSize(), QIcon.Normal, QIcon.On)
         MainWindow.setWindowIcon(icon)
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setIconSize(QSize(100, 100))
         MainWindow.setToolButtonStyle(Qt.ToolButtonIconOnly)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout = QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
         self.stack_pags = QStackedWidget(self.centralwidget)
         self.stack_pags.setObjectName(u"stack_pags")
         self.stack_pags.setEnabled(True)
+        self.stack_pags.setGeometry(QRect(10, 0, 394, 391))
         self.view_inicial = QWidget()
         self.view_inicial.setObjectName(u"view_inicial")
         self.view_inicial.setEnabled(True)
@@ -58,6 +54,16 @@ class Ui_MainWindow(object):
         self.btn_inicial = QPushButton(self.view_inicial)
         self.btn_inicial.setObjectName(u"btn_inicial")
         self.btn_inicial.setGeometry(QRect(150, 290, 75, 23))
+        self.btn_inicial.setLayoutDirection(Qt.LeftToRight)
+        self.btn_inicial.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(85, 170, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.line_nome = QLineEdit(self.view_inicial)
         self.line_nome.setObjectName(u"line_nome")
         self.line_nome.setGeometry(QRect(100, 140, 201, 20))
@@ -65,9 +71,6 @@ class Ui_MainWindow(object):
         self.line_senha = QLineEdit(self.view_inicial)
         self.line_senha.setObjectName(u"line_senha")
         self.line_senha.setGeometry(QRect(100, 220, 201, 31))
-        self.btn_cadastro_user = QPushButton(self.view_inicial)
-        self.btn_cadastro_user.setObjectName(u"btn_cadastro_user")
-        self.btn_cadastro_user.setGeometry(QRect(110, 350, 150, 23))
         self.stack_pags.addWidget(self.view_inicial)
         self.view_principal = QWidget()
         self.view_principal.setObjectName(u"view_principal")
@@ -87,13 +90,64 @@ class Ui_MainWindow(object):
         self.label_opcao.setAlignment(Qt.AlignCenter)
         self.btn_option_transferir = QPushButton(self.view_principal)
         self.btn_option_transferir.setObjectName(u"btn_option_transferir")
-        self.btn_option_transferir.setGeometry(QRect(90, 160, 201, 30))
+        self.btn_option_transferir.setGeometry(QRect(90, 140, 201, 30))
+        self.btn_option_transferir.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_option_consultar = QPushButton(self.view_principal)
         self.btn_option_consultar.setObjectName(u"btn_option_consultar")
-        self.btn_option_consultar.setGeometry(QRect(90, 230, 201, 30))
+        self.btn_option_consultar.setGeometry(QRect(90, 190, 201, 30))
+        self.btn_option_consultar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_option_cadastrar = QPushButton(self.view_principal)
         self.btn_option_cadastrar.setObjectName(u"btn_option_cadastrar")
-        self.btn_option_cadastrar.setGeometry(QRect(90, 300, 201, 30))
+        self.btn_option_cadastrar.setGeometry(QRect(90, 240, 201, 30))
+        self.btn_option_cadastrar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.btn_option_user = QPushButton(self.view_principal)
+        self.btn_option_user.setObjectName(u"btn_option_user")
+        self.btn_option_user.setGeometry(QRect(90, 340, 201, 30))
+        self.btn_option_user.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 13px\n"
+"}")
+        self.btn_cadastro_user = QPushButton(self.view_principal)
+        self.btn_cadastro_user.setObjectName(u"btn_cadastro_user")
+        self.btn_cadastro_user.setGeometry(QRect(90, 290, 201, 30))
+        self.btn_cadastro_user.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_principal)
         self.view_transferencia = QWidget()
         self.view_transferencia.setObjectName(u"view_transferencia")
@@ -108,12 +162,39 @@ class Ui_MainWindow(object):
         self.btn_scanner = QPushButton(self.view_transferencia)
         self.btn_scanner.setObjectName(u"btn_scanner")
         self.btn_scanner.setGeometry(QRect(330, 90, 61, 23))
+        self.btn_scanner.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_transf_ok = QPushButton(self.view_transferencia)
         self.btn_transf_ok.setObjectName(u"btn_transf_ok")
         self.btn_transf_ok.setGeometry(QRect(230, 210, 75, 23))
+        self.btn_transf_ok.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_transf_voltar = QPushButton(self.view_transferencia)
         self.btn_transf_voltar.setObjectName(u"btn_transf_voltar")
         self.btn_transf_voltar.setGeometry(QRect(50, 210, 75, 23))
+        self.btn_transf_voltar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_transferencia)
         self.view_transferencia_ag = QWidget()
         self.view_transferencia_ag.setObjectName(u"view_transferencia_ag")
@@ -131,6 +212,15 @@ class Ui_MainWindow(object):
         self.btn_transferir = QPushButton(self.view_transferencia_ag)
         self.btn_transferir.setObjectName(u"btn_transferir")
         self.btn_transferir.setGeometry(QRect(160, 190, 75, 30))
+        self.btn_transferir.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(85, 170, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_transferencia_ag)
         self.view_cadastro = QWidget()
         self.view_cadastro.setObjectName(u"view_cadastro")
@@ -151,9 +241,38 @@ class Ui_MainWindow(object):
         self.btn_cad_Scanner = QPushButton(self.view_cadastro)
         self.btn_cad_Scanner.setObjectName(u"btn_cad_Scanner")
         self.btn_cad_Scanner.setGeometry(QRect(310, 180, 75, 30))
+        self.btn_cad_Scanner.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_cadastrar = QPushButton(self.view_cadastro)
         self.btn_cadastrar.setObjectName(u"btn_cadastrar")
         self.btn_cadastrar.setGeometry(QRect(150, 260, 75, 30))
+        self.btn_cadastrar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	background-color: rgb(85, 170, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.btn_cad_voltar = QPushButton(self.view_cadastro)
+        self.btn_cad_voltar.setObjectName(u"btn_cad_voltar")
+        self.btn_cad_voltar.setGeometry(QRect(150, 310, 75, 30))
+        self.btn_cad_voltar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_cadastro)
         self.view_user_cadastro = QWidget()
         self.view_user_cadastro.setObjectName(u"view_user_cadastro")
@@ -171,9 +290,29 @@ class Ui_MainWindow(object):
         self.btn_user_cadastrar = QPushButton(self.view_user_cadastro)
         self.btn_user_cadastrar.setObjectName(u"btn_user_cadastrar")
         self.btn_user_cadastrar.setGeometry(QRect(150, 250, 75, 30))
+        self.btn_user_cadastrar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	background-color: rgb(85, 170, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.line_user_senha = QLineEdit(self.view_user_cadastro)
         self.line_user_senha.setObjectName(u"line_user_senha")
         self.line_user_senha.setGeometry(QRect(90, 190, 200, 30))
+        self.btn_user_voltar = QPushButton(self.view_user_cadastro)
+        self.btn_user_voltar.setObjectName(u"btn_user_voltar")
+        self.btn_user_voltar.setGeometry(QRect(150, 300, 75, 30))
+        self.btn_user_voltar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_user_cadastro)
         self.view_consulta = QWidget()
         self.view_consulta.setObjectName(u"view_consulta")
@@ -185,9 +324,27 @@ class Ui_MainWindow(object):
         self.btn_cons_voltar = QPushButton(self.view_consulta)
         self.btn_cons_voltar.setObjectName(u"btn_cons_voltar")
         self.btn_cons_voltar.setGeometry(QRect(40, 370, 75, 23))
+        self.btn_cons_voltar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_cons_excluir = QPushButton(self.view_consulta)
         self.btn_cons_excluir.setObjectName(u"btn_cons_excluir")
         self.btn_cons_excluir.setGeometry(QRect(280, 370, 75, 23))
+        self.btn_cons_excluir.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.btn_cons_salvar = QPushButton(self.view_consulta)
         self.btn_cons_salvar.setObjectName(u"btn_cons_salvar")
         self.btn_cons_salvar.setGeometry(QRect(160, 370, 75, 23))
@@ -202,13 +359,52 @@ class Ui_MainWindow(object):
 "}")
         self.tlabe_consulta = QTableWidget(self.view_consulta)
         self.tlabe_consulta.setObjectName(u"tlabe_consulta")
-        self.tlabe_consulta.setGeometry(QRect(-5, 21, 401, 331))
+        self.tlabe_consulta.setGeometry(QRect(0, 70, 391, 291))
+        self.lineEdit = QLineEdit(self.view_consulta)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setGeometry(QRect(72, 40, 161, 20))
+        self.label = QLabel(self.view_consulta)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 40, 71, 20))
+        self.pushButton = QPushButton(self.view_consulta)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(240, 40, 75, 23))
+        self.pushButton.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.pushButton_2 = QPushButton(self.view_consulta)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(320, 40, 75, 23))
+        self.pushButton_2.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.stack_pags.addWidget(self.view_consulta)
         self.view_aviso = QWidget()
         self.view_aviso.setObjectName(u"view_aviso")
         self.btn_aviso = QPushButton(self.view_aviso)
         self.btn_aviso.setObjectName(u"btn_aviso")
         self.btn_aviso.setGeometry(QRect(150, 180, 75, 23))
+        self.btn_aviso.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
         self.label_aviso = QLabel(self.view_aviso)
         self.label_aviso.setObjectName(u"label_aviso")
         self.label_aviso.setGeometry(QRect(40, 39, 311, 121))
@@ -217,10 +413,117 @@ class Ui_MainWindow(object):
         font2.setPointSize(22)
         font2.setBold(True)
         self.label_aviso.setFont(font2)
+        self.label_aviso.setAlignment(Qt.AlignCenter)
         self.stack_pags.addWidget(self.view_aviso)
-
-        self.verticalLayout.addWidget(self.stack_pags)
-
+        self.widget = QWidget()
+        self.widget.setObjectName(u"widget")
+        self.label_2 = QLabel(self.widget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(70, 0, 341, 20))
+        self.label_2.setFont(font1)
+        self.line_altera_nome = QLineEdit(self.widget)
+        self.line_altera_nome.setObjectName(u"line_altera_nome")
+        self.line_altera_nome.setGeometry(QRect(100, 60, 201, 30))
+        self.line_altera_ag = QLineEdit(self.widget)
+        self.line_altera_ag.setObjectName(u"line_altera_ag")
+        self.line_altera_ag.setGeometry(QRect(100, 120, 201, 30))
+        self.line_altera_senha = QLineEdit(self.widget)
+        self.line_altera_senha.setObjectName(u"line_altera_senha")
+        self.line_altera_senha.setGeometry(QRect(100, 180, 200, 30))
+        self.btn_salve_user = QPushButton(self.widget)
+        self.btn_salve_user.setObjectName(u"btn_salve_user")
+        self.btn_salve_user.setGeometry(QRect(160, 240, 75, 23))
+        self.btn_salve_user.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(85, 170, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.stack_pags.addWidget(self.widget)
+        self.view_admin = QWidget()
+        self.view_admin.setObjectName(u"view_admin")
+        self.view_admin.setEnabled(True)
+        self.label_4 = QLabel(self.view_admin)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(50, 0, 311, 20))
+        font3 = QFont()
+        font3.setPointSize(12)
+        font3.setBold(True)
+        self.label_4.setFont(font3)
+        self.label_5 = QLabel(self.view_admin)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(0, 40, 51, 21))
+        self.line_admin_procurar = QLineEdit(self.view_admin)
+        self.line_admin_procurar.setObjectName(u"line_admin_procurar")
+        self.line_admin_procurar.setGeometry(QRect(60, 40, 201, 20))
+        self.btn_admin_procurar = QPushButton(self.view_admin)
+        self.btn_admin_procurar.setObjectName(u"btn_admin_procurar")
+        self.btn_admin_procurar.setGeometry(QRect(290, 40, 75, 23))
+        self.btn_admin_procurar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.list_admin_user = QTableWidget(self.view_admin)
+        self.list_admin_user.setObjectName(u"list_admin_user")
+        self.list_admin_user.setEnabled(True)
+        self.list_admin_user.setGeometry(QRect(0, 70, 391, 261))
+        self.btn_admin_voltar = QPushButton(self.view_admin)
+        self.btn_admin_voltar.setObjectName(u"btn_admin_voltar")
+        self.btn_admin_voltar.setGeometry(QRect(10, 350, 75, 23))
+        self.btn_admin_voltar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.btn_admin_salvar = QPushButton(self.view_admin)
+        self.btn_admin_salvar.setObjectName(u"btn_admin_salvar")
+        self.btn_admin_salvar.setGeometry(QRect(110, 350, 75, 23))
+        self.btn_admin_salvar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.btn_admin_alterar = QPushButton(self.view_admin)
+        self.btn_admin_alterar.setObjectName(u"btn_admin_alterar")
+        self.btn_admin_alterar.setGeometry(QRect(220, 350, 75, 23))
+        self.btn_admin_alterar.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.btn_admin_del = QPushButton(self.view_admin)
+        self.btn_admin_del.setObjectName(u"btn_admin_del")
+        self.btn_admin_del.setGeometry(QRect(320, 350, 75, 23))
+        self.btn_admin_del.setStyleSheet(u"QPushButton{\n"
+"	font-size: 12px;\n"
+"	border-radius: 10px;\n"
+"	\n"
+"	background-color: rgb(217, 217, 217);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	font: 14px\n"
+"}")
+        self.stack_pags.addWidget(self.view_admin)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -232,7 +535,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stack_pags.setCurrentIndex(6)
+        self.stack_pags.setCurrentIndex(9)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -245,12 +548,13 @@ class Ui_MainWindow(object):
         self.line_nome.setText("")
         self.line_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe seu Nome de Usu\u00e1rio", None))
         self.line_senha.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe sua Senha", None))
-        self.btn_cadastro_user.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR-SE", None))
         self.titulo_2.setText(QCoreApplication.translate("MainWindow", u"CONTROLE DE IMOBILIZADOS", None))
         self.label_opcao.setText(QCoreApplication.translate("MainWindow", u"Escolha uma Op\u00e7\u00e3o", None))
         self.btn_option_transferir.setText(QCoreApplication.translate("MainWindow", u"TRANSFERIR IMOBILIZADO", None))
         self.btn_option_consultar.setText(QCoreApplication.translate("MainWindow", u"CONSULTA IMOBILIZADOS", None))
         self.btn_option_cadastrar.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR IMOBILIZADOS", None))
+        self.btn_option_user.setText(QCoreApplication.translate("MainWindow", u"CONFIGURACOES DE USUSARIOS", None))
+        self.btn_cadastro_user.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR USUARIO", None))
         self.label_titulo.setText(QCoreApplication.translate("MainWindow", u"TRANSFERENCIA DE IMOBILIZADOS", None))
         self.line_cod_barra.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe o codigo de barras de 8 digitos", None))
         self.btn_scanner.setText(QCoreApplication.translate("MainWindow", u"Scanner", None))
@@ -266,16 +570,34 @@ class Ui_MainWindow(object):
         self.line_cad_cod_barras.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe o codigo de barras 8 digitos", None))
         self.btn_cad_Scanner.setText(QCoreApplication.translate("MainWindow", u"Scanner", None))
         self.btn_cadastrar.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR", None))
+        self.btn_cad_voltar.setText(QCoreApplication.translate("MainWindow", u"VOLTAR", None))
         self.label_cad_user_titulo.setText(QCoreApplication.translate("MainWindow", u"CADASTRO USUARIO", None))
         self.line_user_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe o nome para usuario", None))
         self.line_user_agencia.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe a Agencia", None))
         self.btn_user_cadastrar.setText(QCoreApplication.translate("MainWindow", u"CADASTRAR", None))
         self.line_user_senha.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe uma senha de 4 digitos ou mais", None))
+        self.btn_user_voltar.setText(QCoreApplication.translate("MainWindow", u"VOLTAR", None))
         self.label_titulo_consulta.setText(QCoreApplication.translate("MainWindow", u"CONSULTA IMOBILIZADOS", None))
         self.btn_cons_voltar.setText(QCoreApplication.translate("MainWindow", u"VOLTAR", None))
         self.btn_cons_excluir.setText(QCoreApplication.translate("MainWindow", u"EXCLUIR", None))
         self.btn_cons_salvar.setText(QCoreApplication.translate("MainWindow", u"SALVAR", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe o codigo de barras", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"PROCURAR:", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PROCURAR", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"SCANNER", None))
         self.btn_aviso.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.label_aviso.setText("")
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"ALTERANDO CADASTRO USUARIO", None))
+        self.line_altera_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe um Nome", None))
+        self.line_altera_ag.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe a Agencia", None))
+        self.line_altera_senha.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Informe uma senha de 4 digitos ou mais", None))
+        self.btn_salve_user.setText(QCoreApplication.translate("MainWindow", u"SALVAR", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"CONFIGURA\u00c7\u00d5ES ADMINISTRADOR", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Procurar:", None))
+        self.btn_admin_procurar.setText(QCoreApplication.translate("MainWindow", u"PROCURAR", None))
+        self.btn_admin_voltar.setText(QCoreApplication.translate("MainWindow", u"VOLTAR", None))
+        self.btn_admin_salvar.setText(QCoreApplication.translate("MainWindow", u"SALVAR", None))
+        self.btn_admin_alterar.setText(QCoreApplication.translate("MainWindow", u"ALTERAR", None))
+        self.btn_admin_del.setText(QCoreApplication.translate("MainWindow", u"EXCLUIR", None))
     # retranslateUi
 

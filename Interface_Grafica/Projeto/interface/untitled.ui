@@ -43,567 +43,800 @@
    <enum>Qt::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QStackedWidget" name="stack_pags">
-      <property name="enabled">
-       <bool>true</bool>
+   <widget class="QStackedWidget" name="stack_pags">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>394</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="view_inicial">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="titulo">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
       </property>
-      <property name="currentIndex">
-       <number>6</number>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
-      <widget class="QWidget" name="view_inicial">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="titulo">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>30</y>
-          <width>261</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CONTROLE DE IMOBILIZADOS</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_inicial">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>290</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>ENTRAR</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_nome">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>140</y>
-          <width>201</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="placeholderText">
-         <string>Informe seu Nome de Usuário</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_senha">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>220</y>
-          <width>201</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe sua Senha</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cadastro_user">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>350</y>
-          <width>150</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>CADASTRAR-SE</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_principal">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="titulo_2">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>10</y>
-          <width>261</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CONTROLE DE IMOBILIZADOS</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_opcao">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>70</y>
-          <width>241</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Escolha uma Opção</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_option_transferir">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>160</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TRANSFERIR IMOBILIZADO</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_option_consultar">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>230</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>CONSULTA IMOBILIZADOS</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_option_cadastrar">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>300</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>CADASTRAR IMOBILIZADOS</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_transferencia">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="label_titulo">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>0</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TRANSFERENCIA DE IMOBILIZADOS</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_cod_barra">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>311</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe o codigo de barras de 8 digitos</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_scanner">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>90</y>
-          <width>61</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Scanner</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_transf_ok">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>210</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>OK</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_transf_voltar">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>210</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>VOLTAR</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_transferencia_ag">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="label_titulo_ag">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>0</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TRANSFERENCIA DE IMOBILIZADOS</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_trans_ag">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>130</y>
-          <width>210</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe a agencia para transferir</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_mostra_produto">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>60</y>
-          <width>210</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_transferir">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>190</y>
-          <width>75</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TRANFERIR</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_cadastro">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="label_cad_titulo">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>0</y>
-          <width>251</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CADASTRAR IMOBILIZADOS</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_cad_nome_produto">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>60</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe o nome do Produto</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_cad_agencia">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>120</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe a Agencia</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_cad_cod_barras">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>180</y>
-          <width>201</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe o codigo de barras 8 digitos</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cad_Scanner">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>180</y>
-          <width>75</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Scanner</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cadastrar">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>260</y>
-          <width>75</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>CADASTRAR</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_user_cadastro">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="label_cad_user_titulo">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>0</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CADASTRO USUARIO</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_user_nome">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>70</y>
-          <width>200</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe o nome para usuario</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_user_agencia">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>130</y>
-          <width>200</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe a Agencia</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_user_cadastrar">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>250</y>
-          <width>75</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>CADASTRAR</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="line_user_senha">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>190</y>
-          <width>200</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Informe uma senha de 4 digitos ou mais</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_consulta">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <widget class="QLabel" name="label_titulo_consulta">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>0</y>
-          <width>231</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CONSULTA IMOBILIZADOS</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cons_voltar">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>370</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>VOLTAR</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cons_excluir">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>370</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>EXCLUIR</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_cons_salvar">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>370</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
+      <property name="text">
+       <string>CONTROLE DE IMOBILIZADOS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_inicial">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(85, 170, 0);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>ENTRAR</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_nome">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>140</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>Informe seu Nome de Usuário</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_senha">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>220</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe sua Senha</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_principal">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="titulo_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>10</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>CONTROLE DE IMOBILIZADOS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_opcao">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>70</y>
+        <width>241</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Escolha uma Opção</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_option_transferir">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>140</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>TRANSFERIR IMOBILIZADO</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_option_consultar">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>190</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>CONSULTA IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_option_cadastrar">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>240</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>CADASTRAR IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_option_user">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>340</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 13px
+}</string>
+      </property>
+      <property name="text">
+       <string>CONFIGURACOES DE USUSARIOS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cadastro_user">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>290</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>CADASTRAR USUARIO</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_transferencia">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_titulo">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>0</y>
+        <width>301</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TRANSFERENCIA DE IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_cod_barra">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>90</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe o codigo de barras de 8 digitos</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_scanner">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>90</y>
+        <width>61</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>Scanner</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_transf_ok">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>210</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_transf_voltar">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>210</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>VOLTAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_transferencia_ag">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_titulo_ag">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>0</y>
+        <width>301</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TRANSFERENCIA DE IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_trans_ag">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>130</y>
+        <width>210</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe a agencia para transferir</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_mostra_produto">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>60</y>
+        <width>210</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_transferir">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>190</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(85, 170, 0);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>TRANFERIR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_cadastro">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_cad_titulo">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>0</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>CADASTRAR IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_cad_nome_produto">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>60</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe o nome do Produto</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_cad_agencia">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>120</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe a Agencia</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_cad_cod_barras">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>180</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe o codigo de barras 8 digitos</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cad_Scanner">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>180</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>Scanner</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cadastrar">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>260</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	background-color: rgb(85, 170, 0);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>CADASTRAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cad_voltar">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>310</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>VOLTAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_user_cadastro">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_cad_user_titulo">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>0</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>CADASTRO USUARIO</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_user_nome">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe o nome para usuario</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_user_agencia">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe a Agencia</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_user_cadastrar">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>250</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	background-color: rgb(85, 170, 0);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>CADASTRAR</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_user_senha">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>190</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe uma senha de 4 digitos ou mais</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_user_voltar">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>300</y>
+        <width>75</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>VOLTAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_consulta">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_titulo_consulta">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>0</y>
+        <width>231</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>CONSULTA IMOBILIZADOS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cons_voltar">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>370</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>VOLTAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cons_excluir">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>370</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>EXCLUIR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cons_salvar">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>370</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
 background-color: rgb(0, 170, 0);
 color: rgb(255, 255, 255);
 font-size: 16px;
@@ -612,61 +845,413 @@ border-radius: 10px;
 QPushButton:hover{
 	font: 20px
 }</string>
-        </property>
-        <property name="text">
-         <string>SALVAR</string>
-        </property>
-       </widget>
-       <widget class="QTableWidget" name="tlabe_consulta">
-        <property name="geometry">
-         <rect>
-          <x>-5</x>
-          <y>21</y>
-          <width>401</width>
-          <height>331</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="view_aviso">
-       <widget class="QPushButton" name="btn_aviso">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>180</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_aviso">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>39</y>
-          <width>311</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>MS Sans Serif</family>
-          <pointsize>22</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </widget>
+      </property>
+      <property name="text">
+       <string>SALVAR</string>
+      </property>
      </widget>
-    </item>
-   </layout>
+     <widget class="QTableWidget" name="tlabe_consulta">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>70</y>
+        <width>391</width>
+        <height>291</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>72</x>
+        <y>40</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe o codigo de barras</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PROCURAR:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>40</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>PROCURAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>40</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>SCANNER</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_aviso">
+     <widget class="QPushButton" name="btn_aviso">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>180</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_aviso">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>39</y>
+        <width>311</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>22</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget">
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>0</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>ALTERANDO CADASTRO USUARIO</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_altera_nome">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe um Nome</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_altera_ag">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>120</y>
+        <width>201</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe a Agencia</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_altera_senha">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>180</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Informe uma senha de 4 digitos ou mais</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_salve_user">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>240</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(85, 170, 0);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>SALVAR</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="view_admin">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>0</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>CONFIGURAÇÕES ADMINISTRADOR</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Procurar:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_admin_procurar">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>40</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_admin_procurar">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>40</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>PROCURAR</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="list_admin_user">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>70</y>
+        <width>391</width>
+        <height>261</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_admin_voltar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>VOLTAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_admin_salvar">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>SALVAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_admin_alterar">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>ALTERAR</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_admin_del">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	font-size: 12px;
+	border-radius: 10px;
+	
+	background-color: rgb(217, 217, 217);
+}
+QPushButton:hover{
+	font: 14px
+}</string>
+      </property>
+      <property name="text">
+       <string>EXCLUIR</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -1,12 +1,12 @@
-#import cv2
-#from pyzbar.pyzbar import decode
+import cv2
+from pyzbar.pyzbar import decode
 from pathlib import Path
 import json
 ROOT_FOLDER_USUARIOS = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
 
 scanner_codigo_barras = None
-class Scanner:
+class Scanner():
     def __init__(self):
         camera_id = 0
         delay = 1
