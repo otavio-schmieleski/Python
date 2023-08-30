@@ -6,4 +6,4 @@ from django.http import HttpResponse
 # uma funcao quando eu estiver na home
 def home(request):
     print('home')
-    return render(request,'home/home.html')
+    return render(request,'home/home.html',{'text': 'estamos na home'})

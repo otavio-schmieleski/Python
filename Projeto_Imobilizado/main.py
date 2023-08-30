@@ -5,21 +5,16 @@ from interface_user import Ui_MainWindow
 import sys
 from pathlib import Path
 import json
-from tst import OpenCVWidget
 from Banco_de_dados_user import Banco_de_dados_salve_user
 from Banco_de_dados_prod import Banco_de_dados_save_produtos
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
 
 
-class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_save_produtos,OpenCVWidget):
+class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_save_produtos):
     def __init__(self,parent = None):
         super().__init__(parent)
         self.setupUi(self)
-        
-        self.setWindowTitle("OpenCV in PySide6")
-        central_widget = OpenCVWidget()
-        self.setCentralWidget(central_widget)
 
         self.line_altera_nome.setEnabled(False)
         self.stack_pags.setCurrentIndex(0)
@@ -47,7 +42,7 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
         self.pushButton.clicked.connect(self.btn_cons_procura)
         self.btn_user_voltar.clicked.connect(self.btn_cadastro_user_volta)
         self.btn_cad_voltar.clicked.connect(self.btn_cadastro_voltar)
-
+    
     def clicled_btn_iniciar(self):
         try:
             with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
@@ -141,13 +136,22 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
                 self.tlabe_consulta.setItem(0,1,QTableWidgetItem('AGENCIA'))
                 self.tlabe_consulta.setItem(0,2,QTableWidgetItem('COD DE BARRAS'))
                 try:
-                    for i,item in enumerate(banco_produtos):
-                        if ag == item['ag']:
-                            self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
-                            self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
-                            self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
-                    if len(item) == 0:
-                        self.func_aviso('Nada de Imobilizados','OK','red',1)
+                    if ag > 1:
+                        for i,item in enumerate(banco_produtos):
+                            if ag == item['ag']:
+                                self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
+                                self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                                self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
+                        if len(item) == 0:
+                            self.func_aviso('Nada de Imobilizados','OK','red',1)
+                    else:
+                        for i,item in enumerate(banco_produtos):
+                            if ag == item:
+                                self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
+                                self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                                self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
+                        if len(item) == 0:
+                            self.func_aviso('Nada de Imobilizados','OK','red',1)
                 except:
                     self.func_aviso('Nada de Imobilizados','OK','red',1)
 

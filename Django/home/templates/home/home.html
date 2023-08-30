@@ -1,11 +1,16 @@
-<!DOCTYPE html>
+{% load static %} # serve para carregar aruivo staticos<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hello word!!</title>
+    <link rel = 'stylesheet' href="{%static 'index.css'%}"> # serve para carregar um arquivo css
 </head>
 <body>
-    <h1 style="text-align: center;">Ola sejabem vindo ao teste de Django</h1>
+    {% include  =local do arquivo%} # serre para executar um comando  fora do html
+    <h1 style="text-align: center;">Ola sejabem vindo ao teste de Django</h1> 
+    {% block  %}{{text}}{% endblock  %}{{text}} # serve para subit texto no html
+    
+
 </body>
 </html>
