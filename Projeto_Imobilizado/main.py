@@ -131,10 +131,12 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
                 except FileNotFoundError:
                     pass
                 self.tlabe_consulta.setRowCount(len(banco_produtos) + 1)
-                self.tlabe_consulta.setColumnCount(3)
+                self.tlabe_consulta.setColumnCount(4)
                 self.tlabe_consulta.setItem(0,0,QTableWidgetItem('PRODUTOS'))
                 self.tlabe_consulta.setItem(0,1,QTableWidgetItem('AGENCIA'))
                 self.tlabe_consulta.setItem(0,2,QTableWidgetItem('COD DE BARRAS'))
+                self.tlabe_consulta.setItem(0,3,QTableWidgetItem('DATA'))
+                
                 try:
                     if ag > 1:
                         for i,item in enumerate(banco_produtos):
@@ -142,16 +144,13 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
                                 self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
                                 self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
                                 self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
-                        if len(item) == 0:
-                            self.func_aviso('Nada de Imobilizados','OK','red',1)
+                                self.tlabe_consulta.setItem(i+1,3,QTableWidgetItem(item['date']))
                     else:
                         for i,item in enumerate(banco_produtos):
-                            if ag == item:
-                                self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
-                                self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
-                                self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
-                        if len(item) == 0:
-                            self.func_aviso('Nada de Imobilizados','OK','red',1)
+                            self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
+                            self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
+                            self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
+                            self.tlabe_consulta.setItem(i+1,3,QTableWidgetItem(item['date']))
                 except:
                     self.func_aviso('Nada de Imobilizados','OK','red',1)
 
@@ -175,16 +174,20 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
         list(banco_produtos)
         self.tlabe_consulta.clear()
         self.tlabe_consulta.setRowCount(len(banco_produtos) + 1)
-        self.tlabe_consulta.setColumnCount(3)
+        self.tlabe_consulta.setColumnCount(4)
         self.tlabe_consulta.setItem(0,0,QTableWidgetItem('PRODUTOS'))
         self.tlabe_consulta.setItem(0,1,QTableWidgetItem('AGENCIA'))
         self.tlabe_consulta.setItem(0,2,QTableWidgetItem('COD DE BARRAS'))
+        self.tlabe_consulta.setItem(0,3,QTableWidgetItem('DATA'))
+        
         try:
             for i,item in enumerate(banco_produtos):
                 if texto == item['cod_barra']:
                     self.tlabe_consulta.setItem(i+1,0,QTableWidgetItem(item['name']))
                     self.tlabe_consulta.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
                     self.tlabe_consulta.setItem(i+1,2,QTableWidgetItem(item['cod_barra']))
+                    self.tlabe_consulta.setItem(i+1,3,QTableWidgetItem(item['date']))
+                    
             if len(item) == 0:
                 self.func_aviso('Nada de Imobilizados','OK','red',1)
         except:
@@ -302,16 +305,20 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
             pass
         self.list_admin_user.clear()
         self.list_admin_user.setRowCount(len(banco) + 1)
-        self.list_admin_user.setColumnCount(3)
+        self.list_admin_user.setColumnCount(4)
         self.list_admin_user.setItem(0,0,QTableWidgetItem('PRODUTOS'))
         self.list_admin_user.setItem(0,1,QTableWidgetItem('AGENCIA'))
         self.list_admin_user.setItem(0,2,QTableWidgetItem('PASSWORD'))
+        self.list_admin_user.setItem(0,3,QTableWidgetItem('DATA'))
+        
         for i,usuario in enumerate(banco):
             if self.procurado == usuario['name']:
                 item = usuario
                 self.list_admin_user.setItem(i+1,0,QTableWidgetItem(item['name']))
                 self.list_admin_user.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
                 self.list_admin_user.setItem(i+1,2,QTableWidgetItem(item['password']))
+                self.list_admin_user.setItem(i+1,3,QTableWidgetItem(item['date']))
+                
 
 
     def btn_option_user_admin(self):
@@ -320,15 +327,19 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
             banco = json.load(file)
         list(banco)
         self.list_admin_user.setRowCount(len(banco) + 1)
-        self.list_admin_user.setColumnCount(3)
+        self.list_admin_user.setColumnCount(4)
         self.list_admin_user.setItem(0,0,QTableWidgetItem('PRODUTOS'))
         self.list_admin_user.setItem(0,1,QTableWidgetItem('AGENCIA'))
         self.list_admin_user.setItem(0,2,QTableWidgetItem('PASSWORD'))
+        self.list_admin_user.setItem(0,3,QTableWidgetItem('DATA'))
+        
         try:
             for i,item in enumerate(banco):
                 self.list_admin_user.setItem(i+1,0,QTableWidgetItem(item['name']))
                 self.list_admin_user.setItem(i+1,1,QTableWidgetItem(str(item['ag'])))
                 self.list_admin_user.setItem(i+1,2,QTableWidgetItem(item['password']))
+                self.list_admin_user.setItem(i+1,3,QTableWidgetItem(item['date']))
+                
         except:
             pass
 
