@@ -1,0 +1,27 @@
+<TelaFloatLayout>
+    FloatLayout:
+        Button:
+            text:'bt1'
+            # o percentual de 10% de tamanho
+            size_hint: .1,.1
+            # a posicao relativa do eixo x e do topo
+            pos_hint: {"x":0,"top":1}
+        Button:
+            text:'bt2'
+            # o percentual de 20 % de tamanho
+            size_hint: .2,.2
+            # a posicao relativa no centro x de 50% e do centro y em 50%
+            pos_hint: {"center_x": .5, "center_y": .5}
+        Button:
+            text:'bt3'
+            # o percentual de 30% de tamanho
+            size_hint: .3,.3
+            # a posicao relativa ao y : 0 e a direita em 100%
+            pos_hint: {'y':0,'right':1.}
+        Button:
+            text:'bt4'
+            # o percentual de 40% de tamanho
+            size_hint: .4,.4
+            # a posicao relativa do y: 0 e a esquerda 100%
+            pos_hint: {'y':0,'left':1.}
+

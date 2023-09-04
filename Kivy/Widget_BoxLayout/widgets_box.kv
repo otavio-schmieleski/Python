@@ -1,0 +1,29 @@
+<TelaBoxLayout>
+
+    # divide tudo os bootes com o mesmo tamanho de altura
+    BoxLayout:
+
+        # orientacao dos botoes tudo em vertical
+        orientation:'vertical'
+
+        # todo os espacos entre as bordas sao de 20px todos os lados
+        padding: 20
+
+        # espaco entre os botoes de 50px
+        spacing: 50
+
+        Button:
+            text: 'btn1'
+            # tamanho do botao de 100% de largura e altura
+            size_hint: 1.,1.
+
+        Button:
+            text:'btn2'
+            # tamanho do botao de 50% de largura e altura
+            size_hint: .5,.5
+
+        Button:
+            text:'btn3'
+            # tamanho do botao de 25% de largura e altura
+            size_hint: .25,.25
+            

@@ -1,0 +1,26 @@
+<RootWidget>:
+
+    Button:
+        # calculo do botao por pixel
+        text:'px'
+        size:350,50
+        x:100
+        y:350
+        size_hint:None,None
+    
+    Button:
+        #calculo do botao por dp
+        size_hint: None,None
+        size: dp(350),dp(50)
+        pos: dp(100),dp(270)
+        text:'dp'
+
+    Button:
+        # valores percentuais
+        #    1.0 = 100%
+        #    0.01 = 1%
+        #    pos_hint: {'y': .5} # significa que vai ficar em 50 % da altura da tela
+        # calculo do botao por porcentagem
+        size_hint: (.5,.09) # deve ser 50% do video e 9% de largura
+        pos_hint: {'x':.1,'y:':.5}
+        text:'%'

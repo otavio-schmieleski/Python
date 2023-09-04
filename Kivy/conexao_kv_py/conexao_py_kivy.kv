@@ -1,0 +1,17 @@
+# class
+<MinhaTela@BoxLayout>:
+    orientation:'vertical'
+    Button:
+        text: 'Ok'
+        # quando for presionado o root vai no arquivo do pytgon e pega a funcao click
+        on_press: root.click()
+    Label:
+        text:'label 1'
+        # defini um id para ser buscado no py
+        id: lb1
+    Label:
+        text:'label2'
+        id: lb2
+
+# executando a class
+MinhaTela:

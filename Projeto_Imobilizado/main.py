@@ -9,13 +9,15 @@ from Banco_de_dados_user import Banco_de_dados_salve_user
 from Banco_de_dados_prod import Banco_de_dados_save_produtos
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
+ROOT_FOLDER_TEMP = Path(__file__).parent / 'temp.json'
+from Envio_de_Email import Email_Automatico
 
 
-class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_save_produtos):
+class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_save_produtos,Email_Automatico):
     def __init__(self,parent = None):
         super().__init__(parent)
         self.setupUi(self)
-
+        self.item = []
         self.line_altera_nome.setEnabled(False)
         self.stack_pags.setCurrentIndex(0)
         self.btn_inicial.clicked.connect(self.clicled_btn_iniciar)
@@ -25,7 +27,7 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
         self.btn_transferir.clicked.connect(self.clicled_btn_transf_ag)
         self.btn_option_consultar.clicked.connect(self.btn_clicled_option_consulta)
         self.btn_transf_voltar.clicked.connect(self.btn_tranf_voltar)
-        self.btn_cons_excluir.clicked.connect(self.btn_cons_del)
+        self.btn_cons_excluir.clicked.connect(self.btn_cons_email)#
         self.btn_cons_salvar.clicked.connect(self.btn_cons_salvar_banco)
         self.btn_cons_voltar.clicked.connect(self.btn_cons_voltar_inicio)
         self.btn_option_cadastrar.clicked.connect(self.btn_cadastro_inicio)
@@ -55,9 +57,9 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
         continua = True
         for user in banco:
             if self.user_informado == user['name'] and self.password_informado == user['password']:
-                ag = user['ag']
+                self.agencia = user['ag']
                 continua = False
-                if ag > 1:
+                if self.agencia > 1:
                     self.btn_cadastro_user.setEnabled(False)
                     self.btn_option_cadastrar.setEnabled(False)
                     self.btn_option_transferir.setEnabled(False)
@@ -154,7 +156,8 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
                 except:
                     self.func_aviso('Nada de Imobilizados','OK','red',1)
 
-    def btn_cons_del(self):
+
+    def btn_cons_email(self):
         produto_selecionado = self.tlabe_consulta.currentRow()
         try:
             with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
@@ -162,9 +165,9 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
             list(banco_produtos)
         except FileNotFoundError:
             pass
-        del banco_produtos[produto_selecionado - 1]
-        with open(ROOT_FOLDER_PRODUTOS, 'w', encoding='utf-8') as file:
-            json.dump(banco_produtos,file,ensure_ascii=False,indent=2)
+        self.item.append(banco_produtos[produto_selecionado - 1])
+        with open(ROOT_FOLDER_TEMP, 'w', encoding='utf-8') as file:
+            json.dump(self.item,file,ensure_ascii=False,indent=2)
         self.btn_clicled_option_consulta()
     
     def btn_cons_procura(self):
@@ -194,6 +197,7 @@ class Window(QMainWindow,Ui_MainWindow,Banco_de_dados_salve_user,Banco_de_dados_
             self.func_aviso('Nada de Imobilizados','OK','red',1)
 
     def btn_cons_salvar_banco(self):
+        Email_Automatico('Teste',self.user_informado,self.agencia)
         self.func_aviso('Salvo com Sucesso!','OK','green',1)
     
     def btn_cons_voltar_inicio(self):

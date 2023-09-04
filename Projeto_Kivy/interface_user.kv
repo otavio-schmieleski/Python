@@ -1,0 +1,390 @@
+#: import C kivy.utils.get_color_from_hex
+
+<View_inicial>
+    FloatLayout:
+        Label:
+            text:'CONTROLE DE IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id: line_nome
+            size_hint: .5,.05
+            pos_hint: {"center_x": .5, "y": .65}
+            multilane: False
+            hint_text: "Informe seu Nome de Usuário"
+        TextInput:
+            id: line_senha
+            size_hint: .5,.05
+            pos_hint: {"center_x": .5, "y": .50}
+            multilane: False
+            hint_text: "informe sua Senha"
+
+        Button:
+            id: btn_inicial
+            text:'ENTRAR'
+            size_hint: .18,.08
+            pos_hint: {"center_x": .5, "y": .25}
+            background_normal: ""
+            background_color: C("#55aa00")
+
+<View_principal_user>
+    FloatLayout:
+        Label:
+            text:'CONTROLE DE IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        Label:
+            text:'Escolha uma Opção'
+            size_hint: .25,.25
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+        Button:
+            id: btn_option_consultar
+            text:'CONSULTAR IMOBILIZADO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .5}
+            
+<View_principal>
+    FloatLayout:
+        Label:
+            text:'CONTROLE DE IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        Label:
+            text:'Escolha uma Opção'
+            size_hint: .25,.25
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+        Button:
+            id: btn_option_transferir
+            text:'TRANSFERIR IMOBILIZADO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .6}
+
+        Button:
+            id: btn_option_consultar
+            text:'CONSULTAR IMOBILIZADO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        Button:
+            id: btn_option_cadastrar
+            text:'CADASTRAR IMOBILIZADO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .4}
+
+        Button:
+            id: btn_option_cadastro_user
+            text:'CADASTRAR USUARIO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .3}
+
+        Button:
+            id: btn_option_user
+            text:'CONFIGURAÇÕES DE USUARIOS'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .2}
+            
+<View_transferencia>
+    FloatLayout:
+        Label:
+            text:'TRANSFERENCIA DE IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:linha_cod_barra
+            hint_text: "Informe o codigo de barras de 8 digitos"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.4,"center_y":.7}
+            multilane: False
+        Button:
+            id: btn_scanner_transferencia
+            text:'Scanner'
+            size_hint: .12,.05
+            pos_hint: {"center_x":.75,"center_y": .7}
+        Button:
+            id: btn_transf_ok
+            text:'OK'
+            size_hint: .12,.05
+            pos_hint: {"center_x":.5,"center_y": .5}
+        Button:
+            id: btn_transf_voltar
+            text:'VOLTAR'
+            size_hint: .12,.05
+            pos_hint: {"center_x":.5,"center_y": .4}
+
+<View_transferencia_ag>
+    FloatLayout:
+        Label:
+            text:'TRANSFERENCIA DE IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:line_transf_ag
+            hint_text: "Informe a agencia para transferir"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.7}
+            multilane: False
+        Button:
+            id: btn_transferir
+            text:'TRANSFERIR'
+            size_hint: .23,.08
+            pos_hint: {"center_x": .5, "y": .5}
+            background_normal: ""
+            background_color: C("#55aa00")
+
+<View_cadastro>
+    FloatLayout:
+        Label:
+            text:'CADASTRAR IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:line_cad_nome_produto
+            hint_text: "Informe o nome do Produto"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.7}
+            multilane: False
+        TextInput:
+            id:line_cad_agencia
+            hint_text: "Informe a Agencia"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.6}
+            multilane: False
+        TextInput:
+            id:line_cad_cod_barras
+            hint_text: "Informe o codigo de barras 8 digitos"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.5}
+            multilane: False
+        Button:
+            id: btn_cadastrar
+            text:'CADASTRAR'
+            size_hint: .23,.08
+            pos_hint: {"center_x": .5, "y": .3}
+            background_normal: ""
+            background_color: C("#55aa00")
+        Button:
+            id: btn_cad_voltar
+            text:'VOLTAR'
+            size_hint: .23,.08
+            pos_hint: {"center_x": .5, "y": .2}
+        Button:
+            id: btn_cad_Scanner
+            text:'Scanner'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .9, "y": .47}
+
+<View_user_Cadastro>
+    FloatLayout:
+        Label:
+            text:'CADASTRO USUARIO'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:line_user_nome
+            hint_text: "Informe o nome para usuario"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.7}
+            multilane: False
+        TextInput:
+            id:line_user_agencia
+            hint_text: "Informe a Agencia"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.6}
+            multilane: False
+        TextInput:
+            id:line_user_senha
+            hint_text: "Informe a senha de 4 digitos ou mais"
+            size_hint: .5,.05
+            pos_hint: {"center_x":.5,"center_y":.5}
+            multilane: False
+        Button:
+            id: btn_user_cadastrar
+            text:'CADASTRAR'
+            size_hint: .23,.08
+            pos_hint: {"center_x": .5, "y": .3}
+            background_normal: ""
+            background_color: C("#55aa00")
+        Button:
+            id: btn_user_voltar
+            text:'VOLTAR'
+            size_hint: .23,.08
+            pos_hint: {"center_x": .5, "y": .2}
+
+<View_consulta>
+    FloatLayout:
+        Label:
+            text:'CONSULTA IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        Label:
+            text:'PROCURAR:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .10, "y": .75}
+        TextInput:
+            id:line_cons_procurar
+            hint_text: "Informe o codigo de barras"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.36,"y":.78}
+            multilane: False
+        Button:
+            id: btn_cons_procurar
+            text:'PROCURAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .68, "y": .78}
+        Button:
+            id: btn_cons_scanner
+            text:'SCANNER'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .85, "y": .78}
+        GridLayout:
+            cols: 5
+            size_hint: .8,.5
+            pos_hint: {"center_x": 0.5, "center_y":.5}
+        Button:
+            id: btn_cons_voltar
+            text:'VOLTAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .2, "y": .2}
+        Button:
+            id: btn_cons_salvar
+            text:'SALVAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .2}
+            background_normal: ""
+            background_color: C("#55aa00")
+        Button:
+            id: btn_cons_excluir
+            text:'EXCLUIR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .8, "y": .2}
+
+<View_aviso>
+    FloatLayout:
+        Label:
+            id: label_aviso
+            text:''
+            size_hint: .5,.5
+            pos_hint: {"center_x": .5,"center_y":.7}
+        Button:
+            id: btn_aviso
+            text:'OK'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .5}
+
+<View_alterar_usuario>
+    FloatLayout:
+        Label:
+            text:'ALTERANDO CADASTRO USUARIO'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:line_altera_nome
+            hint_text: "Informe um Nome"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.5,"y":.78}
+            multilane: False
+        TextInput:
+            id:line_altera_ag
+            hint_text: "Informe a Agencia"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.5,"y":.68}
+            multilane: False
+        TextInput:
+            id:line_altera_senha
+            hint_text: "Informe uma senha de 4 digitos ou mais"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.5,"y":.58}
+            multilane: False
+        Button:
+            id: btn_salve_user
+            text:'SALVAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .38}
+            background_normal: ""
+            background_color: C("#55aa00")
+
+<View_admin>
+    FloatLayout:
+        Label:
+            text:'CONFIGURACOES ADMINISTRADOR'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        Label:
+            text:'PROCURAR:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .15, "y": .75}
+        TextInput:
+            id:line_admin_procurar
+            hint_text: "Informe o nome do usuario"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.46,"y":.78}
+            multilane: False
+        Button:
+            id: btn_admin_procurar
+            text:'PROCURAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .78, "y": .78}
+        GridLayout:
+            cols: 5
+            size_hint: .8,.5
+            pos_hint: {"center_x": 0.5, "center_y":.5}
+        Button:
+            id: btn_admin_voltar
+            text:'VOLTAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .2, "y": .2}
+        Button:
+            id: btn_admin_salvar
+            text:'SALVAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .4, "y": .2}
+        Button:
+            id: btn_admin_alterar
+            text:'ALTERAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .6, "y": .2}
+        Button:
+            id: btn_admin_excluir
+            text:'EXCLUIR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .8, "y": .2}

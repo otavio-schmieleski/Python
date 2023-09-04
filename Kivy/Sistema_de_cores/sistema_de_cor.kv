@@ -1,0 +1,29 @@
+# importamos a funcao de passar cores em hexa decimal e renomeamos para o nome C
+#: import C kivy.utils.get_color_from_hex
+<TelaCores>
+    BoxLayout:
+        orientation:'vertical'
+        Button:
+            text:'btn1'
+            size_hint: .3,.3
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_press : root.on_press_bt
+            # definimos a cor no padrao rgba
+            #background_color: 0,.2,.1,1
+
+            # utilizamos a funcao hexadecimal importada anteriormente
+            background_color: C("#FFFFFF")
+
+            # pela documentacao temo que zerar p background_normal
+            background_normal: ""
+
+<TelaCores_de_Fundo>
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: .3,.3
+        canvas.before:
+            color: 
+                rgba: C("#22FFAA")
+            Rectangle:
+                pos:self.pos
+                size: self.size

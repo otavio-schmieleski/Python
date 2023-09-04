@@ -1,0 +1,30 @@
+# aqui chama a class e defini os botoes
+<Tela1>:
+# orientacao da pagina
+    orientation: 'vertical'
+    # cria os botoes
+    Button:
+        text:'clique'
+        # aqui quando o botao for clicado troca a tela
+        on_press: root.on_press_bt()
+    Button:
+        text:'bt2'
+    Button:
+        text:'bt3'
+
+# chama a class
+<Tela2>:
+    # defini a orientacao
+    orientation: 'vertical'
+    # cria botao
+    Button:
+        text:'clique'
+        # quando o botao for clicado troca a tela
+        on_press: root.on_press_bt()
+
+# cria uma class com o nome MeuBotao e extende da class Button       
+<MeuBotao@Button>
+    text: 'btn'
+
+# para incluir outro aquivo kv deveno colocar o path do aquivo 
+##:include  path_do_arquivo.kv

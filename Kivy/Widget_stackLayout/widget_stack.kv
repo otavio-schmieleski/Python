@@ -1,0 +1,20 @@
+<TelaStackLayout>
+
+    # empilha um botao em cima do outro
+    StackLayout:
+        # de baixo para cima b = buttom e t = top | e da esquerda para direita l= left e r = right
+        orientation: 'bt-lr'
+        Button:
+            text:'btn1'
+            # largura de 33% e altura de 10%
+            size_hint: .33,.1
+
+        Button:
+            text:'btn2'
+            size_hint: .33,.1
+
+        Button:
+            text:'btn3'
+            size_hint: .33,.1
+
+# As orientações válidas são 'lr-tb', 'tb-lr', 'rl-tb', 'tb-rl', 'lr-bt', 'bt-lr', 'rl-bt' e 'bt-rl' 
