@@ -45,11 +45,17 @@
             font_size: 25
             pos_hint: {"center_x": .5, "y": .70}
         Button:
-            id: btn_option_consultar
+            id: btn_option_consultar_user
             text:'CONSULTAR IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .5}
+        Button:
+            id: btn_option_conferencia
+            text:'CONFERENCIA DE IMOBILIZADO'
+            size_hint: .45,.10
+            font_size: 15
+            pos_hint: {"center_x": .5, "center_y": .4}
             
 <View_principal>
     FloatLayout:
@@ -94,7 +100,7 @@
             pos_hint: {"center_x": .5, "center_y": .3}
 
         Button:
-            id: btn_option_user
+            id: btn_admin
             text:'CONFIGURAÇÕES DE USUARIOS'
             size_hint: .45,.10
             font_size: 15
@@ -303,6 +309,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
+<View_sucesso>
+    FloatLayout:
+        Label:
+            id: label_sucesso
+            text:''
+            size_hint: .5,.5
+            pos_hint: {"center_x": .5,"center_y":.7}
+        Button:
+            id: btn_sucesso
+            text:'OK'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .5}
 
 <View_alterar_usuario>
     FloatLayout:
@@ -388,3 +406,41 @@
             text:'EXCLUIR'
             size_hint: .15,.05
             pos_hint: {"center_x": .8, "y": .2}
+
+<View_conferencia>
+    FloatLayout:
+        Label:
+            text:'Conferencia Imobilizados'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:conf_cod_barra
+            hint_text: "Informe o codigo de barras"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.5,"y":.7}
+            multilane: False
+        Button:
+            id: btn_conferencia_procurar
+            text:'CONFERIR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .6}
+        Label:
+            id: label_produto
+            text:''
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5,"center_y":.5}
+        Button:
+            id: btn_conferencia_salvar
+            text:'SALVAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .35}
+        Button:
+            id: btn_conferencia_finalizar
+            text:'FINALIZAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .2}
+            background_normal: ""
+            background_color: C("#55aa00")
