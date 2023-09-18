@@ -1,0 +1,3 @@
+title=Ola Mundo
+author=Otavio
+orientation=landscape

@@ -37,7 +37,7 @@ class Email_Automatico():
         #inserindo a senha
         navegador.find_element('xpath','//*[@id="i0118"]').send_keys('controle_imobilizados')
         navegador.find_element('xpath','//*[@id="idSIButton9"]').click()
-        time.sleep(1)
+        time.sleep(2)
 
         #pulando notificacao
         navegador.find_element('xpath','//*[@id="idBtn_Back"]').click()
@@ -75,6 +75,7 @@ class Email_Automatico():
                 pyautogui.write(f'Produto: {item["name"]}  |  Ag: {item["ag"]}  |  CODIGO DE BARRAS: {item["cod_barra"]}')
                 pyautogui.press('enter',interval=0.1,presses=2)
             navegador.find_element('xpath','//*[@id="docking_InitVisiblePart_0"]/div/div[2]/div[1]/div/span/button[1]').click()
+            time.sleep(3)
         else:
             pyautogui.write(f'Boa Tarde Controle de Imobilizado')
             pyautogui.press('enter',interval=0.1, presses=1)
@@ -84,3 +85,4 @@ class Email_Automatico():
                 pyautogui.write(f'Produto: {item["name"]}  |  Ag: {item["ag"]}  |  CODIGO DE BARRAS: {item["cod_barra"]}')
                 pyautogui.press('enter',interval=0.1,presses=2)
             navegador.find_element('xpath','//*[@id="docking_InitVisiblePart_0"]/div/div[2]/div[1]/div/span/button[1]').click()
+            time.sleep(3)

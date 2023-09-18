@@ -1,5 +1,4 @@
 #: import C kivy.utils.get_color_from_hex
-
 <View_inicial>
     FloatLayout:
         Label:
@@ -119,46 +118,26 @@
             id:linha_cod_barra
             hint_text: "Informe o codigo de barras de 8 digitos"
             size_hint: .5,.05
-            pos_hint: {"center_x":.4,"center_y":.7}
+            pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
-        Button:
-            id: btn_scanner_transferencia
-            text:'Scanner'
-            size_hint: .12,.05
-            pos_hint: {"center_x":.75,"center_y": .7}
-        Button:
-            id: btn_transf_ok
-            text:'OK'
-            size_hint: .12,.05
-            pos_hint: {"center_x":.5,"center_y": .5}
-        Button:
-            id: btn_transf_voltar
-            text:'VOLTAR'
-            size_hint: .12,.05
-            pos_hint: {"center_x":.5,"center_y": .4}
-
-<View_transferencia_ag>
-    FloatLayout:
-        Label:
-            text:'TRANSFERENCIA DE IMOBILIZADOS'
-            size_hint: .5,.5
-            bold: True
-            font_size: 25
-            pos_hint: {"center_x": .5, "y": .70}
-            border: 25
         TextInput:
             id:line_transf_ag
             hint_text: "Informe a agencia para transferir"
             size_hint: .5,.05
-            pos_hint: {"center_x":.5,"center_y":.7}
+            pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
         Button:
             id: btn_transferir
             text:'TRANSFERIR'
             size_hint: .23,.08
-            pos_hint: {"center_x": .5, "y": .5}
+            pos_hint: {"center_x": .5, "y": .4}
             background_normal: ""
             background_color: C("#55aa00")
+        Button:
+            id: btn_transf_voltar
+            text:'VOLTAR'
+            size_hint: .12,.05
+            pos_hint: {"center_x":.5,"center_y": .3}
 
 <View_cadastro>
     FloatLayout:
@@ -276,9 +255,18 @@
             size_hint: .15,.05
             pos_hint: {"center_x": .85, "y": .78}
         GridLayout:
-            cols: 5
-            size_hint: .8,.5
-            pos_hint: {"center_x": 0.5, "center_y":.5}
+            cols: 3
+            size_hint: .8,.4
+            pos_hint: {"center_x": 0.5, "center_y":.55}
+            Label:
+                id: lb_produto_nome
+                text:''
+            Label:
+                id: lb_produto_agencia
+                text:''
+            Label:
+                id: lb_cod_barra
+                text:''
         Button:
             id: btn_cons_voltar
             text:'VOLTAR'
@@ -322,6 +310,19 @@
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
 
+<View_sucesso_user>
+    FloatLayout:
+        Label:
+            id: label_sucesso_user
+            text:''
+            size_hint: .5,.5
+            pos_hint: {"center_x": .5,"center_y":.7}
+        Button:
+            id: btn_sucesso_user
+            text:'OK'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .5}
+
 <View_alterar_usuario>
     FloatLayout:
         Label:
@@ -331,29 +332,60 @@
             font_size: 25
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
+        Label:
+            text:'PROCURAR:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .2, "y": .75}
+        TextInput:
+            id:line_alterar_procurar
+            hint_text: "Informe o nome do usuario"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.5,"y":.78}
+            multilane: False
+        Button:
+            id: btn_alterar_procurar
+            text:'PROCURAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .78, "y": .78}
+        Label:
+            text:'NOME:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .2, "y": .55}
         TextInput:
             id:line_altera_nome
             hint_text: "Informe um Nome"
             size_hint: .4,.05
-            pos_hint: {"center_x":.5,"y":.78}
+            pos_hint: {"center_x":.5,"y":.58}
             multilane: False
+        Label:
+            text:'AGENCIA:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .2, "y": .45}
         TextInput:
             id:line_altera_ag
             hint_text: "Informe a Agencia"
             size_hint: .4,.05
-            pos_hint: {"center_x":.5,"y":.68}
+            pos_hint: {"center_x":.5,"y":.48}
             multilane: False
+        Label:
+            text:'SENHA:'
+            size_hint: .1,.1
+            font_size: 15
+            pos_hint: {"center_x": .2, "y": .35}
         TextInput:
             id:line_altera_senha
             hint_text: "Informe uma senha de 4 digitos ou mais"
             size_hint: .4,.05
-            pos_hint: {"center_x":.5,"y":.58}
+            pos_hint: {"center_x":.5,"y":.38}
             multilane: False
         Button:
             id: btn_salve_user
             text:'SALVAR'
             size_hint: .15,.05
-            pos_hint: {"center_x": .5, "y": .38}
+            pos_hint: {"center_x": .5, "y": .18}
             background_normal: ""
             background_color: C("#55aa00")
 
@@ -383,9 +415,19 @@
             size_hint: .15,.05
             pos_hint: {"center_x": .78, "y": .78}
         GridLayout:
-            cols: 5
-            size_hint: .8,.5
-            pos_hint: {"center_x": 0.5, "center_y":.5}
+            cols: 1
+            size_hint: .8,.4
+            pos_hint: {"center_x": 0.5, "center_y":.55}
+            Label:
+                id: lb_nome
+                text:''
+            Label:
+                id: lb_agencia
+                text:''
+            Label:
+                id: lb_senha
+                text:''
+                
         Button:
             id: btn_admin_voltar
             text:'VOLTAR'
@@ -437,6 +479,11 @@
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .35}
+        Label:
+            font_size: 10
+            size_hint: .15,.05
+            text:'apenas clique em finalizar quando estiver acabado totalmente a conferencia'
+            pos_hint: {"center_x":.5,"y":.25}
         Button:
             id: btn_conferencia_finalizar
             text:'FINALIZAR'
@@ -444,3 +491,5 @@
             pos_hint: {"center_x": .5, "y": .2}
             background_normal: ""
             background_color: C("#55aa00")
+
+                
