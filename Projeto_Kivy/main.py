@@ -11,7 +11,7 @@ from Banco_de_dados_prod import Banco_de_dados_save_produtos
 from Banco_de_dados_user import Banco_de_dados_salve_user
 from Envio_de_Email import Email_Automatico
 
-Config.set('graphics', 'icon', 'logo.jpeg')
+Config.set('graphics', 'icon', 'logo.png')
 kivy.require('2.2.1')
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
@@ -22,6 +22,7 @@ ROOT_FOLDER_LOG = Path(__file__).parent / 'Log.json'
 lista_de_conferencia = []
 user_nome = ''
 user_agencia = 0
+
 class View_inicial(Screen,FloatLayout):
     def __init__(self, **kwargs):
         super(View_inicial,self).__init__(**kwargs)
@@ -92,8 +93,6 @@ class View_inicial(Screen,FloatLayout):
                     json.dump(log_banco,file,ensure_ascii=False,indent=2)
                 self.manager.current = 'view_principal'
         else:
-            self.user_informado.text = ''
-            self.password_informado.text = ''
             self.manager.current = 'view_aviso_inicial'
             View_aviso_inicial()
             
@@ -313,9 +312,9 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
         list(log_banco)
         for user in log_banco:
             if user['ag'] == 1:
-                self.ids.btn_cons_excluir.disabled = True
+                self.btn_deletar.disabled = True
             else:
-                continue
+                self.btn_deletar.disabled = False
 
     def consulta(self):
         try:
