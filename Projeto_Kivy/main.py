@@ -74,6 +74,7 @@ class View_inicial(Screen,FloatLayout):
                     json.dump(log_banco,file,ensure_ascii=False,indent=2)
 
                 self.manager.current = 'view_principal_user'
+
             else:
                 with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
                     banco_produtos = json.load(file)
@@ -83,6 +84,12 @@ class View_inicial(Screen,FloatLayout):
                     lista_produto.append(item)
                 with open(ROOT_FOLDER_TEMP_PROCURA, 'w', encoding='utf-8') as file:
                     json.dump(lista_produto,file,ensure_ascii=False,indent=2)
+                with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
+                    log_banco = json.load(file)
+                list(log_banco)
+                del log_banco[0]
+                with open(ROOT_FOLDER_LOG,'w',encoding='utf-8') as file:
+                    json.dump(log_banco,file,ensure_ascii=False,indent=2)
                 self.manager.current = 'view_principal'
         else:
             self.user_informado.text = ''
@@ -299,15 +306,16 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
         self.btn_procura.on_press = self.consulta
         self.btn_deletar = self.ids.btn_cons_excluir
         self.btn_deletar.on_press = self.deletar_produto
+        self.btn_deletar = self.ids.btn_cons_excluir
+        self.btn_deletar.on_press = self.deletar_produto
         with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
             log_banco = json.load(file)
         list(log_banco)
         for user in log_banco:
             if user['ag'] == 1:
-                self.btn_deletar = self.ids.btn_cons_excluir
-                self.btn_deletar.on_press = self.deletar_produto
-            else:
                 self.ids.btn_cons_excluir.disabled = True
+            else:
+                continue
 
     def consulta(self):
         try:
