@@ -1,38 +1,14 @@
 [
   {
-    "name": "mesa",
-    "ag": 12,
-    "cod_barra": "12345698",
-    "date": "30/08/23 - 19:24:54"
-  },
-  {
-    "name": "pc",
-    "ag": 2,
-    "cod_barra": "87654321",
-    "date": "30/08/23 - 19:24:54"
-  },
-  {
-    "name": "not",
-    "ag": 2,
-    "cod_barra": "23568972",
+    "name": "Notbook dell",
+    "ag": 3,
+    "cod_barra": "1234712",
     "date": "30/08/23 - 19:24:54"
   },
   {
     "name": "Notbook dell",
     "ag": 3,
-    "cod_barra": "12347896",
+    "cod_barra": "1234715",
     "date": "30/08/23 - 19:24:54"
-  },
-  {
-    "name": "mesa",
-    "ag": 10,
-    "cod_barra": "14725836",
-    "date": "08/09/23 - 17:56:25"
-  },
-  {
-    "name": "armario",
-    "ag": 4,
-    "cod_barra": "12332112",
-    "date": "08/09/23 - 17:57:49"
   }
 ]

@@ -1,11 +1,12 @@
 #: import C kivy.utils.get_color_from_hex
+
 <View_inicial>
     FloatLayout:
         Label:
             text:'CONTROLE DE IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: root.width / 20
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
@@ -14,12 +15,36 @@
             pos_hint: {"center_x": .5, "y": .65}
             multilane: False
             hint_text: "Informe seu Nome de Usuário"
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id: line_senha
             size_hint: .5,.05
             pos_hint: {"center_x": .5, "y": .50}
             multilane: False
             hint_text: "informe sua Senha"
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
         Button:
             id: btn_inicial
@@ -28,7 +53,13 @@
             pos_hint: {"center_x": .5, "y": .25}
             background_normal: ""
             background_color: C("#55aa00")
-
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
+            
 <View_principal_user>
     FloatLayout:
         Label:
@@ -49,12 +80,38 @@
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
         Button:
             id: btn_option_conferencia
             text:'CONFERENCIA DE IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
-            pos_hint: {"center_x": .5, "center_y": .4}
+            pos_hint: {"center_x": .5, "center_y": .3}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
             
 <View_principal>
     FloatLayout:
@@ -75,14 +132,40 @@
             text:'TRANSFERIR IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
-            pos_hint: {"center_x": .5, "center_y": .6}
+            pos_hint: {"center_x": .5, "center_y": .7}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
 
         Button:
             id: btn_option_consultar
             text:'CONSULTAR IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
-            pos_hint: {"center_x": .5, "center_y": .5}
+            pos_hint: {"center_x": .5, "center_y": .55}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
 
         Button:
             id: btn_option_cadastrar
@@ -90,20 +173,58 @@
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .4}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
 
         Button:
             id: btn_option_cadastro_user
             text:'CADASTRAR USUARIO'
             size_hint: .45,.10
             font_size: 15
-            pos_hint: {"center_x": .5, "center_y": .3}
+            pos_hint: {"center_x": .5, "center_y": .25}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            font_size: 16
+            bold: True
 
         Button:
             id: btn_admin
             text:'CONFIGURAÇÕES DE USUARIOS'
             size_hint: .45,.10
             font_size: 15
-            pos_hint: {"center_x": .5, "center_y": .2}
+            pos_hint: {"center_x": .5, "center_y": .1}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
             
 <View_transferencia>
     FloatLayout:
@@ -120,12 +241,36 @@
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
+            background_normal:""
+            background_color: 1,1,1,1
+            border: 5, 5, 5, 5
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id:line_transf_ag
             hint_text: "Informe a agencia para transferir"
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_transferir
             text:'TRANSFERIR'
@@ -133,11 +278,29 @@
             pos_hint: {"center_x": .5, "y": .4}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
         Button:
             id: btn_transf_voltar
             text:'VOLTAR'
             size_hint: .12,.05
             pos_hint: {"center_x":.5,"center_y": .3}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_cadastro>
     FloatLayout:
@@ -154,18 +317,54 @@
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id:line_cad_agencia
             hint_text: "Informe a Agencia"
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id:line_cad_cod_barras
             hint_text: "Informe o codigo de barras 8 digitos"
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.5}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_cadastrar
             text:'CADASTRAR'
@@ -173,16 +372,47 @@
             pos_hint: {"center_x": .5, "y": .3}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
+
         Button:
             id: btn_cad_voltar
             text:'VOLTAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_cad_Scanner
             text:'Scanner'
             size_hint: .15,.05
             pos_hint: {"center_x": .9, "y": .47}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_user_Cadastro>
     FloatLayout:
@@ -199,18 +429,54 @@
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id:line_user_agencia
             hint_text: "Informe a Agencia"
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         TextInput:
             id:line_user_senha
             hint_text: "Informe a senha de 4 digitos ou mais"
             size_hint: .5,.05
             pos_hint: {"center_x":.5,"center_y":.5}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_user_cadastrar
             text:'CADASTRAR'
@@ -218,11 +484,29 @@
             pos_hint: {"center_x": .5, "y": .3}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
         Button:
             id: btn_user_voltar
             text:'VOLTAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_consulta>
     FloatLayout:
@@ -233,29 +517,43 @@
             font_size: 25
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
-        Label:
-            text:'PROCURAR:'
-            size_hint: .1,.1
-            font_size: 15
-            pos_hint: {"center_x": .10, "y": .75}
         TextInput:
             id:line_cons_procurar
             hint_text: "Informe o codigo de barras"
             size_hint: .4,.05
             pos_hint: {"center_x":.36,"y":.78}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_cons_procurar
             text:'PROCURAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .68, "y": .78}
-        Button:
-            id: btn_cons_scanner
-            text:'SCANNER'
-            size_hint: .15,.05
-            pos_hint: {"center_x": .85, "y": .78}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         GridLayout:
-            cols: 3
+            cols: 1
             size_hint: .8,.4
             pos_hint: {"center_x": 0.5, "center_y":.55}
             Label:
@@ -272,6 +570,18 @@
             text:'VOLTAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .2, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_cons_salvar
             text:'SALVAR'
@@ -279,12 +589,54 @@
             pos_hint: {"center_x": .5, "y": .2}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
         Button:
             id: btn_cons_excluir
-            text:'EXCLUIR'
+            text:'BAIXAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .8, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
+<View_aviso_inicial>
+    FloatLayout:
+        Label:
+            id: label_aviso_inicial
+            text:''
+            size_hint: .5,.5
+            pos_hint: {"center_x": .5,"center_y":.7}
+        Button:
+            id: btn_aviso_inicial
+            text:'OK'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 <View_aviso>
     FloatLayout:
         Label:
@@ -297,6 +649,42 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
+<View_aviso_admin>
+    FloatLayout:
+        Label:
+            id: label_aviso_admin
+            text:''
+            size_hint: .5,.5
+            pos_hint: {"center_x": .5,"center_y":.7}
+        Button:
+            id: btn_aviso_admin
+            text:'OK'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .5, "y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 <View_sucesso>
     FloatLayout:
         Label:
@@ -309,6 +697,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_sucesso_user>
     FloatLayout:
@@ -322,6 +722,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_alterar_usuario>
     FloatLayout:
@@ -343,22 +755,59 @@
             size_hint: .4,.05
             pos_hint: {"center_x":.5,"y":.78}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_alterar_procurar
             text:'PROCURAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .78, "y": .78}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Label:
             text:'NOME:'
             size_hint: .1,.1
             font_size: 15
             pos_hint: {"center_x": .2, "y": .55}
+            
         TextInput:
             id:line_altera_nome
             hint_text: "Informe um Nome"
             size_hint: .4,.05
             pos_hint: {"center_x":.5,"y":.58}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Label:
             text:'AGENCIA:'
             size_hint: .1,.1
@@ -370,6 +819,18 @@
             size_hint: .4,.05
             pos_hint: {"center_x":.5,"y":.48}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Label:
             text:'SENHA:'
             size_hint: .1,.1
@@ -381,6 +842,18 @@
             size_hint: .4,.05
             pos_hint: {"center_x":.5,"y":.38}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_salve_user
             text:'SALVAR'
@@ -388,6 +861,12 @@
             pos_hint: {"center_x": .5, "y": .18}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
 
 <View_admin>
     FloatLayout:
@@ -409,11 +888,35 @@
             size_hint: .4,.05
             pos_hint: {"center_x":.46,"y":.78}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_admin_procurar
             text:'PROCURAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .78, "y": .78}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         GridLayout:
             cols: 1
             size_hint: .8,.4
@@ -433,21 +936,69 @@
             text:'VOLTAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .2, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_admin_salvar
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .4, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_admin_alterar
             text:'ALTERAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .6, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_admin_excluir
             text:'EXCLUIR'
             size_hint: .15,.05
             pos_hint: {"center_x": .8, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
 
 <View_conferencia>
     FloatLayout:
@@ -464,11 +1015,35 @@
             size_hint: .4,.05
             pos_hint: {"center_x":.5,"y":.7}
             multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Button:
             id: btn_conferencia_procurar
             text:'CONFERIR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .6}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Label:
             id: label_produto
             text:''
@@ -479,6 +1054,18 @@
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .35}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
         Label:
             font_size: 10
             size_hint: .15,.05
@@ -491,5 +1078,11 @@
             pos_hint: {"center_x": .5, "y": .2}
             background_normal: ""
             background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
 
                 
