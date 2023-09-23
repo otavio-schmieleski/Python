@@ -12,7 +12,7 @@ from Banco_de_dados_user import Banco_de_dados_salve_user
 #from Envio_de_Email import Email_Automatico
 
 #Config.set('graphics', 'icon', 'logo.png')
-kivy.require('2.2.1')
+#kivy.require('2.2.1')
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
 ROOT_FOLDER_TEMP = Path(__file__).parent / 'temp.json'
@@ -108,7 +108,7 @@ class View_principal_user(Screen,FloatLayout):
         view_conferencia.on_press = self.tela_conferencia
 
     def tela_consulta_user(self):
-        self.manager.current = 'view_consulta'
+        self.manager.current = 'view_consulta_user'
     
     def tela_conferencia(self):
         self.manager.current = 'view_conferencia'
@@ -216,7 +216,7 @@ class View_cadastro(Screen,FloatLayout):
             self.manager.current = 'view_aviso'
             View_aviso()
         codigo_barras = self.ids.line_cad_cod_barras.text
-        if codigo_barras.isdigit() and len(codigo_barras) == 8:
+        if len(codigo_barras) > 8:
             continua = True
             for codigo in banco_produtos:
                 if codigo_barras in codigo['cod_barra']:
@@ -308,14 +308,6 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
         self.btn_deletar.on_press = self.deletar_produto
         self.btn_deletar = self.ids.btn_cons_excluir
         self.btn_deletar.on_press = self.deletar_produto
-        with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
-            log_banco = json.load(file)
-        list(log_banco)
-        for user in log_banco:
-            if user['ag'] == 1:
-                self.btn_deletar.disabled = True
-            else:
-                self.btn_deletar.disabled = False
 
     def consulta(self):
         try:
@@ -335,52 +327,23 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
                 self.lb_produto_ag.text = f"AGENCIA:  {str(produtos['ag'])}"
                 self.lb_produto_cod.text = f"COD_BARRA:  {produtos['cod_barra']}"
             elif line_procura == '':
-                with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
-                    log_banco = json.load(file)
-                list(log_banco)
-                for user in log_banco:
-                    if user['ag'] != 1:
-                        self.manager.current = 'view_aviso'
-                        View_aviso()
-                    else:
-                        self.manager.current = 'view_aviso_admin'
-                        View_aviso_admin()
+                self.manager.current = 'view_aviso_admin'
+                View_aviso_admin()
             else:
                 continue
     
     def tela_voltar(self):
-        with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
-            log_banco = json.load(file)
-        list(log_banco)
-        for user in log_banco:
-            if user['ag'] != 1:
-                self.manager.current = 'view_principal_user'
-                self.lb_nome_produto.text = ''
-                self.lb_produto_ag.text = ''
-                self.lb_produto_cod.text = ''
-            else:
-                self.manager.current = 'view_principal'
-                self.lb_nome_produto.text = ''
-                self.lb_produto_ag.text = ''
-                self.lb_produto_cod.text = ''
+        self.manager.current = 'view_principal'
+        self.lb_nome_produto.text = ''
+        self.lb_produto_ag.text = ''
+        self.lb_produto_cod.text = ''
     
     def tela_salvar(self):
-        with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
-            log_banco = json.load(file)
-        list(log_banco)
-        for user in log_banco:
-            if user['ag'] != 1:
-                self.lb_nome_produto.text = ''
-                self.lb_produto_ag.text = ''
-                self.lb_produto_cod.text = ''
-                self.manager.current = 'view_sucesso_user'
-                View_sucesso_user()
-            else:
-                self.lb_nome_produto.text = ''
-                self.lb_produto_ag.text = ''
-                self.lb_produto_cod.text = ''
-                self.manager.current = 'view_sucesso'
-                View_sucesso()
+        self.lb_nome_produto.text = ''
+        self.lb_produto_ag.text = ''
+        self.lb_produto_cod.text = ''
+        self.manager.current = 'view_sucesso'
+        View_sucesso()
     
     def deletar_produto(self):
         with open(ROOT_FOLDER_PRODUTOS,'r',encoding='utf-8') as file:
@@ -392,27 +355,67 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
                 del banco[i]
                 with open(ROOT_FOLDER_PRODUTOS,'w', encoding='utf-8') as file:
                     json.dump(banco,file,ensure_ascii=False,indent=2)
-
-                with open(ROOT_FOLDER_LOG,'r',encoding='utf-8') as file:
-                    log_banco = json.load(file)
-                list(log_banco)
-                for user in log_banco:
-                    if user['ag'] != 1:
-                        self.lb_nome_produto.text = ''
-                        self.lb_produto_ag.text = ''
-                        self.lb_produto_cod.text = ''
-                        self.manager.current = 'view_sucesso_user'
-                        View_sucesso_user()
-                    else:
-                        self.lb_nome_produto.text = ''
-                        self.lb_produto_ag.text = ''
-                        self.lb_produto_cod.text = ''
-                        self.manager.current = 'view_sucesso'
-                        View_sucesso()
+                self.lb_nome_produto.text = ''
+                self.lb_produto_ag.text = ''
+                self.lb_produto_cod.text = ''
+                self.manager.current = 'view_sucesso'
+                View_sucesso()
             else:
                 continue
 
+class View_consulta_user(Screen,FloatLayout):
+    def __init__(self, **kwargs):
+        super(View_consulta_user,self).__init__(**kwargs)
+        self.line_procura = self.ids.line_cons_user_procurar.text
+        self.lb_nome_produto = self.ids.lb_produto_user_nome
+        self.lb_produto_ag = self.ids.lb_produto_user_agencia
+        self.lb_produto_cod = self.ids.lb_cod_user_barra
+        self.btn_voltar = self.ids.btn_cons_user_voltar
+        self.btn_voltar.on_press = self.tela_voltar
+        self.btn_salvar = self.ids.btn_cons_user_salvar
+        self.btn_salvar.on_press = self.tela_salvar
+        self.btn_procura = self.ids.btn_cons_user_procurar
+        self.btn_procura.on_press = self.consulta
 
+    def consulta(self):
+        try:
+            with open(ROOT_FOLDER_PRODUTOS,'r',encoding='utf-8') as file:
+                banco = json.load(file)
+            list (banco)
+        except:
+            ...
+
+        for produtos in banco:
+            line_procura = self.ids.line_cons_user_procurar.text
+            if line_procura in produtos['cod_barra'] and line_procura != '':
+                self.lb_nome_produto.text = ''
+                self.lb_produto_ag.text = ''
+                self.lb_produto_cod.text = ''
+                self.lb_nome_produto.text = f"PRODUTO:  {produtos['name']}".upper()
+                self.lb_produto_ag.text = f"AGENCIA:  {str(produtos['ag'])}"
+                self.lb_produto_cod.text = f"COD_BARRA:  {produtos['cod_barra']}"
+            elif line_procura == '':
+                self.manager.current = 'view_aviso'
+                View_aviso()
+            else:
+                self.manager.current = 'view_aviso'
+                View_aviso()
+                
+    
+    def tela_voltar(self):
+        self.manager.current = 'view_principal_user'
+        self.lb_nome_produto.text = ''
+        self.lb_produto_ag.text = ''
+        self.lb_produto_cod.text = ''
+    
+    def tela_salvar(self):
+        self.lb_nome_produto.text = ''
+        self.lb_produto_ag.text = ''
+        self.lb_produto_cod.text = ''
+        self.manager.current = 'view_sucesso_user'
+        View_sucesso_user()
+
+    
 class View_alterar_usuario(Screen,FloatLayout):
     def __init__(self, **kwargs):
         super(View_alterar_usuario,self).__init__(**kwargs)
@@ -657,6 +660,7 @@ class interface_user(App):
         self.sm.add_widget(View_aviso_admin(name='view_aviso_admin'))
         self.sm.add_widget(View_cadastro(name = 'view_cadastro'))
         self.sm.add_widget(View_consulta(name = 'view_consulta'))
+        self.sm.add_widget(View_consulta_user(name = 'view_consulta_user'))
         self.sm.add_widget(View_principal(name = 'view_principal'))
         self.sm.add_widget(View_principal_user(name = 'view_principal_user'))
         self.sm.add_widget(View_transferencia(name = 'view_transferencia'))

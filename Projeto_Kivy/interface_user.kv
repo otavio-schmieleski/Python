@@ -596,6 +596,94 @@
                     rgba: 0, 0, 0, 1
             bold: True
 
+<View_consulta_user>
+    FloatLayout:
+        Label:
+            text:'CONSULTA IMOBILIZADOS'
+            size_hint: .5,.5
+            bold: True
+            font_size: 25
+            pos_hint: {"center_x": .5, "y": .70}
+            border: 25
+        TextInput:
+            id:line_cons_user_procurar
+            hint_text: "Informe o codigo de barras"
+            size_hint: .4,.05
+            pos_hint: {"center_x":.36,"y":.78}
+            multilane: False
+            border: 5, 5, 5, 5
+            background_normal:""
+            background_color: 1,1,1,1
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
+        Button:
+            id: btn_cons_user_procurar
+            text:'PROCURAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .68, "y": .78}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
+        GridLayout:
+            cols: 1
+            size_hint: .8,.4
+            pos_hint: {"center_x": 0.5, "center_y":.55}
+            Label:
+                id: lb_produto_user_nome
+                text:''
+            Label:
+                id: lb_produto_user_agencia
+                text:''
+            Label:
+                id: lb_cod_user_barra
+                text:''
+        Button:
+            id: btn_cons_user_voltar
+            text:'VOLTAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .3, "y": .2}
+            border: 5, 5, 5, 5
+            background_normal: ""
+            background_color: 0.29,0.29,0.29,1
+            canvas.before:
+                Color:
+                    rgba: 0.29,0.29,0.29,1
+                Line:
+                    width: self.border[0]
+                    rectangle: self.x, self.y, self.width, self.height
+                Color:
+                    rgba: 0, 0, 0, 1
+            bold: True
+        Button:
+            id: btn_cons_user_salvar
+            text:'SALVAR'
+            size_hint: .15,.05
+            pos_hint: {"center_x": .7, "y": .2}
+            background_normal: ""
+            background_color: C("#55aa00")
+            canvas.before:
+                Color:
+                    rgba: 0.3333, 0.6667, 0, 1
+                Line:
+                    width:5
+                    rectangle: self.x,self.y,self.width,self.height
+
 <View_aviso_inicial>
     FloatLayout:
         Label:
