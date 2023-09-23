@@ -9,9 +9,9 @@ import json
 from kivy.config import Config
 from Banco_de_dados_prod import Banco_de_dados_save_produtos
 from Banco_de_dados_user import Banco_de_dados_salve_user
-from Envio_de_Email import Email_Automatico
+#from Envio_de_Email import Email_Automatico
 
-Config.set('graphics', 'icon', 'logo.png')
+#Config.set('graphics', 'icon', 'logo.png')
 kivy.require('2.2.1')
 ROOT_FOLDER = Path(__file__).parent / 'Users.json'
 ROOT_FOLDER_PRODUTOS = Path(__file__).parent / 'Cadastro_Produtos.json'
@@ -22,14 +22,14 @@ ROOT_FOLDER_LOG = Path(__file__).parent / 'Log.json'
 lista_de_conferencia = []
 user_nome = ''
 user_agencia = 0
-
+# Tela Inicial
 class View_inicial(Screen,FloatLayout):
     def __init__(self, **kwargs):
         super(View_inicial,self).__init__(**kwargs)
         btn_inicial = self.ids.btn_inicial
         btn_inicial.on_press = self.click_btn_inicial
 
-
+    # funcao do clique do botao entrar da tela inicial
     def click_btn_inicial(self):
         try:
             with open(ROOT_FOLDER, 'r', encoding='utf-8') as file:
@@ -40,6 +40,7 @@ class View_inicial(Screen,FloatLayout):
         self.user_informado = self.ids.line_nome.text
         self.password_informado = self.ids.line_senha.text
         continua = True
+        # vereficacao para saber se fechou as informacoes com o banco de dados
         for user in banco:
             if self.user_informado == user['name'] and self.password_informado == user['password']:
                 self.agencia = user['ag']

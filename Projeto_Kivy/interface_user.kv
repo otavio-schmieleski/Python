@@ -6,7 +6,7 @@
             text:'CONTROLE DE IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: root.width / 20
+            font_size: 35
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
@@ -384,23 +384,6 @@
             text:'VOLTAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
-            canvas.before:
-                Color:
-                    rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
-        Button:
-            id: btn_cad_Scanner
-            text:'Scanner'
-            size_hint: .15,.05
-            pos_hint: {"center_x": .9, "y": .47}
             border: 5, 5, 5, 5
             background_normal: ""
             background_color: 0.29,0.29,0.29,1
@@ -1083,6 +1066,4 @@
                     rgba: 0.3333, 0.6667, 0, 1
                 Line:
                     width:5
-                    rectangle: self.x,self.y,self.width,self.height
-
-                
+                    rectangle: self.x,self.y,self.width,self.height     
