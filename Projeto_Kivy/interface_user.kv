@@ -6,73 +6,83 @@
             text:'CONTROLE DE IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 35
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id: line_nome
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x": .5, "y": .65}
             multilane: False
             hint_text: "Informe seu Nome de Usuário"
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
+            font_size: self.width * 0.035
+       
         TextInput:
             id: line_senha
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x": .5, "y": .50}
             multilane: False
             hint_text: "informe sua Senha"
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
+            font_size: self.width * 0.035
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
 
         Button:
             id: btn_inicial
-            text:'ENTRAR'
-            size_hint: .18,.08
+            text: 'ENTRAR'
+            size_hint: .18, .08
+            font_size: self.width * 0.2
             pos_hint: {"center_x": .5, "y": .25}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
-            
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+
 <View_principal_user>
     FloatLayout:
         Label:
             text:'CONTROLE DE IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         Label:
             text:'Escolha uma Opção'
             size_hint: .25,.25
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
         Button:
             id: btn_option_consultar_user
@@ -80,38 +90,38 @@
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
         Button:
             id: btn_option_conferencia
             text:'CONFERENCIA DE IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .3}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
             
 <View_principal>
     FloatLayout:
@@ -119,13 +129,13 @@
             text:'CONTROLE DE IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         Label:
             text:'Escolha uma Opção'
             size_hint: .25,.25
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
         Button:
             id: btn_option_transferir
@@ -133,59 +143,57 @@
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .7}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
-
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
         Button:
             id: btn_option_consultar
             text:'CONSULTAR IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .55}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
-
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
         Button:
             id: btn_option_cadastrar
             text:'CADASTRAR IMOBILIZADO'
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .4}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
 
         Button:
             id: btn_option_cadastro_user
@@ -193,38 +201,38 @@
             size_hint: .45,.10
             font_size: 15
             pos_hint: {"center_x": .5, "center_y": .25}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            font_size: 16
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
 
         Button:
             id: btn_admin
             text:'CONFIGURAÇÕES DE USUARIOS'
             size_hint: .45,.10
-            font_size: 15
             pos_hint: {"center_x": .5, "center_y": .1}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            font_size: 16
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.06
             
 <View_transferencia>
     FloatLayout:
@@ -233,74 +241,84 @@
             size_hint: .5,.5
             bold: True
             font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:linha_cod_barra
             hint_text: "Informe o codigo de barras de 8 digitos"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
-            border: 5, 5, 5, 5
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         TextInput:
             id:line_transf_ag
             hint_text: "Informe a agencia para transferir"
-            size_hint: .5,.05
+            size_hint: .6,.065
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.033
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_transferir
             text:'TRANSFERIR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .4}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_transf_voltar
             text:'VOLTAR'
             size_hint: .12,.05
             pos_hint: {"center_x":.5,"center_y": .3}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_cadastro>
     FloatLayout:
@@ -308,94 +326,107 @@
             text:'CADASTRAR IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:line_cad_nome_produto
             hint_text: "Informe o nome do Produto"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         TextInput:
             id:line_cad_agencia
             hint_text: "Informe a Agencia"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         TextInput:
             id:line_cad_cod_barras
             hint_text: "Informe o codigo de barras 8 digitos"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.5}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_cadastrar
             text:'CADASTRAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .3}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
+            bold: True
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
         Button:
             id: btn_cad_voltar
             text:'VOLTAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_user_Cadastro>
     FloatLayout:
@@ -403,93 +434,106 @@
             text:'CADASTRO USUARIO'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:line_user_nome
             hint_text: "Informe o nome para usuario"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.7}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         TextInput:
             id:line_user_agencia
             hint_text: "Informe a Agencia"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.6}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         TextInput:
             id:line_user_senha
             hint_text: "Informe a senha de 4 digitos ou mais"
-            size_hint: .5,.05
+            size_hint: .6,.06
             pos_hint: {"center_x":.5,"center_y":.5}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_user_cadastrar
             text:'CADASTRAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .3}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            bold: True
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_user_voltar
             text:'VOLTAR'
             size_hint: .23,.08
             pos_hint: {"center_x": .5, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_consulta>
     FloatLayout:
@@ -497,44 +541,47 @@
             text:'CONSULTA IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:line_cons_procurar
             hint_text: "Informe o codigo de barras"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.36,"y":.78}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_cons_procurar
             text:'PROCURAR'
             size_hint: .15,.05
-            pos_hint: {"center_x": .68, "y": .78}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            pos_hint: {"center_x": .75, "y": .78}
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         GridLayout:
             cols: 1
             size_hint: .8,.4
@@ -553,48 +600,52 @@
             text:'VOLTAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .2, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_cons_salvar
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .2}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            bold: True
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_cons_excluir
             text:'BAIXAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .8, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_consulta_user>
     FloatLayout:
@@ -602,44 +653,47 @@
             text:'CONSULTA IMOBILIZADOS'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:line_cons_user_procurar
             hint_text: "Informe o codigo de barras"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.36,"y":.78}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_cons_user_procurar
             text:'PROCURAR'
             size_hint: .15,.05
-            pos_hint: {"center_x": .68, "y": .78}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            pos_hint: {"center_x": .80, "y": .78}
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         GridLayout:
             cols: 1
             size_hint: .8,.4
@@ -658,31 +712,35 @@
             text:'VOLTAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .3, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_cons_user_salvar
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .7, "y": .2}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            bold: True
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_aviso_inicial>
     FloatLayout:
@@ -696,18 +754,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 <View_aviso>
     FloatLayout:
         Label:
@@ -720,18 +778,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 <View_aviso_admin>
     FloatLayout:
         Label:
@@ -744,18 +802,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 <View_sucesso>
     FloatLayout:
         Label:
@@ -768,18 +826,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_sucesso_user>
     FloatLayout:
@@ -793,18 +851,18 @@
             text:'OK'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .5}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_alterar_usuario>
     FloatLayout:
@@ -812,7 +870,7 @@
             text:'ALTERANDO CADASTRO USUARIO'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         Label:
@@ -823,38 +881,41 @@
         TextInput:
             id:line_alterar_procurar
             hint_text: "Informe o nome do usuario"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.5,"y":.78}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_alterar_procurar
             text:'PROCURAR'
             size_hint: .15,.05
-            pos_hint: {"center_x": .78, "y": .78}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            pos_hint: {"center_x": .85, "y": .78}
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Label:
             text:'NOME:'
             size_hint: .1,.1
@@ -864,21 +925,24 @@
         TextInput:
             id:line_altera_nome
             hint_text: "Informe um Nome"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.5,"y":.58}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Label:
             text:'AGENCIA:'
             size_hint: .1,.1
@@ -887,21 +951,24 @@
         TextInput:
             id:line_altera_ag
             hint_text: "Informe a Agencia"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.5,"y":.48}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Label:
             text:'SENHA:'
             size_hint: .1,.1
@@ -910,34 +977,40 @@
         TextInput:
             id:line_altera_senha
             hint_text: "Informe uma senha de 4 digitos ou mais"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.5,"y":.38}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_salve_user
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .18}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_admin>
     FloatLayout:
@@ -945,49 +1018,53 @@
             text:'CONFIGURACOES ADMINISTRADOR'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         Label:
             text:'PROCURAR:'
             size_hint: .1,.1
             font_size: 15
-            pos_hint: {"center_x": .15, "y": .75}
+            font_size: self.width * 0.2
+            pos_hint: {"center_x": .15, "y": .76}
         TextInput:
             id:line_admin_procurar
             hint_text: "Informe o nome do usuario"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.46,"y":.78}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_admin_procurar
             text:'PROCURAR'
-            size_hint: .15,.05
-            pos_hint: {"center_x": .78, "y": .78}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            size_hint: .15,.06
+            pos_hint: {"center_x": .8, "y": .78}
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         GridLayout:
             cols: 1
             size_hint: .8,.4
@@ -1007,69 +1084,69 @@
             text:'VOLTAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .2, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_admin_salvar
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .4, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_admin_alterar
             text:'ALTERAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .6, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Button:
             id: btn_admin_excluir
             text:'EXCLUIR'
             size_hint: .15,.05
             pos_hint: {"center_x": .8, "y": .2}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
 
 <View_conferencia>
     FloatLayout:
@@ -1077,69 +1154,81 @@
             text:'Conferencia Imobilizados'
             size_hint: .5,.5
             bold: True
-            font_size: 25
+            font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
         TextInput:
             id:conf_cod_barra
             hint_text: "Informe o codigo de barras"
-            size_hint: .4,.05
+            size_hint: .5,.06
             pos_hint: {"center_x":.5,"y":.7}
             multilane: False
-            border: 5, 5, 5, 5
-            background_normal:""
+            bold: True
+            font_size: self.width * 0.035
+            halign: 'center' 
+            background_normal:"rounded_input.png"
+            background_active: "rounded_input.png"
             background_color: 1,1,1,1
             canvas.before:
                 Color:
                     rgba: 1, 1, 1, 1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20] 
                 Color:
                     rgba: 0, 0, 0, 1
-            bold: True
         Button:
             id: btn_conferencia_procurar
             text:'CONFERIR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .6}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
-        Label:
-            id: label_produto
-            text:''
-            size_hint: .15,.05
-            pos_hint: {"center_x": .5,"center_y":.5}
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
+        GridLayout:
+            cols: 1
+            size_hint: .8,.4
+            pos_hint: {"center_x": 0.5, "center_y":.55}
+            Label:
+                id: lb_nome_produto
+                text:''
+            Label:
+                id: lb_agencia_produto
+                text:''
+            Label:
+                id: lb_codigo_barra
+                text:''
         Button:
             id: btn_conferencia_salvar
             text:'SALVAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .35}
-            border: 5, 5, 5, 5
-            background_normal: ""
-            background_color: 0.29,0.29,0.29,1
+            bold: True
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.29,0.29,0.29,1
-                Line:
-                    width: self.border[0]
-                    rectangle: self.x, self.y, self.width, self.height
-                Color:
-                    rgba: 0, 0, 0, 1
-            bold: True
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20]
+            font_size: self.width * 0.1
         Label:
             font_size: 10
             size_hint: .15,.05
+            font_size: self.width * 0.1
             text:'apenas clique em finalizar quando estiver acabado totalmente a conferencia'
             pos_hint: {"center_x":.5,"y":.25}
         Button:
@@ -1147,11 +1236,14 @@
             text:'FINALIZAR'
             size_hint: .15,.05
             pos_hint: {"center_x": .5, "y": .2}
-            background_normal: ""
-            background_color: C("#55aa00")
+            halign: 'center'
+            background_normal:""
+            background_color: 0,0,0,0
             canvas.before:
                 Color:
                     rgba: 0.3333, 0.6667, 0, 1
-                Line:
-                    width:5
-                    rectangle: self.x,self.y,self.width,self.height     
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20, 20, 20, 20] 
+            font_size: self.width * 0.1

@@ -572,8 +572,12 @@ class View_conferencia(Screen,FloatLayout):
         for i,produto in enumerate(banco):
             if cod_barra in produto['cod_barra']:
                 item = produto
-                produto = self.ids.label_produto
-                produto.text = f"Produto: {item['name']}    Agencia: {item['ag']}   Cod_barra: {item['cod_barra']}"
+                nome_produto = self.ids.lb_nome_produto
+                nome_produto.text = f"Produto: {item['name']}"
+                agencia_produto = self.idslb_agencia_produto
+                agencia_produto.text = f"Agencia: {item['ag']} "
+                codigo_de_barras = self.ids.lb_codigo_barra
+                codigo_de_barras.text = f"Cod_barra: {item['cod_barra']}"
                 lista_de_conferencia.append(item)
                 del banco[i]
                 with open(ROOT_FOLDER_TEMP, 'w', encoding='utf-8') as file:
