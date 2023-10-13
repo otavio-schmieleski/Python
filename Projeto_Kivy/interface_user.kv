@@ -9,10 +9,14 @@
             font_size: self.width * 0.1
             pos_hint: {"center_x": .5, "y": .70}
             border: 25
+        Image:
+            source:'Projeto_Kivy/logo.png'
+            size_hint: .2,.2
+            pos_hint: {'center_x': .5, 'y': .7}
         TextInput:
             id: line_nome
-            size_hint: .6,.06
-            pos_hint: {"center_x": .5, "y": .65}
+            size_hint: .6,.05
+            pos_hint: {"center_x": .5, "y": .6}
             multilane: False
             hint_text: "Informe seu Nome de Usuário"
             bold: True
@@ -34,7 +38,7 @@
         TextInput:
             id: line_senha
             size_hint: .6,.06
-            pos_hint: {"center_x": .5, "y": .50}
+            pos_hint: {"center_x": .5, "y": .45}
             multilane: False
             hint_text: "informe sua Senha"
             bold: True

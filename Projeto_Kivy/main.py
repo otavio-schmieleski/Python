@@ -74,7 +74,6 @@ class View_inicial(Screen,FloatLayout):
                 del log_banco[0]
                 with open(ROOT_FOLDER_LOG,'w',encoding='utf-8') as file:
                     json.dump(log_banco,file,ensure_ascii=False,indent=2)
-
                 self.manager.current = 'view_principal_user'
 
             else:
@@ -94,6 +93,8 @@ class View_inicial(Screen,FloatLayout):
                     json.dump(log_banco,file,ensure_ascii=False,indent=2)
                 self.manager.current = 'view_principal'
         else:
+            self.ids.line_nome.text = ''
+            self.ids.line_senha.text = ''
             self.manager.current = 'view_aviso_inicial'
             View_aviso_inicial()
             
@@ -146,7 +147,8 @@ class View_transferencia(Screen,FloatLayout):
         btn_transferir.on_press = self.tela_transferir_ag
         btn_volta = self.ids.btn_transf_voltar
         btn_volta.on_press = self.tela_voltar
-    
+        self.validacao = True
+
     def tela_transferir_ag(self):
         try:
             with open(ROOT_FOLDER_PRODUTOS, 'r', encoding='utf-8') as file:
@@ -166,22 +168,41 @@ class View_transferencia(Screen,FloatLayout):
                         codigo['ag'] = self.ag
                         with open(ROOT_FOLDER_PRODUTOS, 'w', encoding='utf-8') as file:
                             json.dump(banco_produtos,file,ensure_ascii=False,indent=2)
-                        self.codigo_barras.text = ''
-                        self.line_trans_ag.text = ''
+                        self.ids.linha_cod_barra.text = ''
+                        self.ids.line_transf_ag.text = ''
                         self.manager.current = 'view_sucesso'
                         View_sucesso()
-
-                except TypeError and ValueError:
+                    else:
+                        self.validacao = False
+                        self.ids.linha_cod_barra.text = ''
+                        self.ids.line_transf_ag.text = ''
+                        self.manager.current = 'view_aviso'
+                        View_aviso()
+                except :
+                    self.validacao = False
+                    self.ids.linha_cod_barra.text = ''
+                    self.ids.line_transf_ag.text = ''
                     self.manager.current = 'view_aviso'
                     View_aviso()
                     pass
             else:
                 continue
         else:
-            self.manager.current = 'view_aviso_admin'
-            View_aviso_admin()
-        
+            if self.validacao == False:
+                self.ids.linha_cod_barra.text = ''
+                self.ids.line_transf_ag.text = ''
+                self.manager.current = 'view_aviso'
+                View_aviso()
+            else:
+                self.ids.linha_cod_barra.text = ''
+                self.ids.line_transf_ag.text = ''
+                self.manager.current = 'view_sucesso'
+                View_sucesso()
+
+
     def tela_voltar(self):
+        self.ids.linha_cod_barra.text = ''
+        self.ids.line_transf_ag.text = ''
         self.manager.current = 'view_principal'
 
 class View_cadastro(Screen,FloatLayout):
@@ -204,6 +225,7 @@ class View_cadastro(Screen,FloatLayout):
         # nome do produto para cadastrar
         P_Name = self.ids.line_cad_nome_produto.text
         if P_Name == "" or P_Name == " " or P_Name =="  " or P_Name == "   ":
+            self.ids.line_cad_nome_produto.text = ''
             self.manager.current = 'view_aviso'
             View_aviso()
         else:
@@ -213,6 +235,7 @@ class View_cadastro(Screen,FloatLayout):
             if P_Ag >= 1 and P_Ag <= 31: 
                 self.ag = P_Ag
         except TypeError and ValueError:
+            self.ids.line_cad_agencia.text = ''
             self.manager.current = 'view_aviso'
             View_aviso()
         codigo_barras = self.ids.line_cad_cod_barras.text
@@ -222,16 +245,23 @@ class View_cadastro(Screen,FloatLayout):
                 if codigo_barras in codigo['cod_barra']:
                     continua = False
             if continua == False:
+                self.ids.line_cad_cod_barras.text = ''
                 self.manager.current = 'view_aviso'  
                 View_aviso()
             else:
                 self.cod_barra = codigo_barras
                 pass
         Banco_de_dados_save_produtos(self.name_produto,self.ag,self.cod_barra)
+        self.ids.line_cad_nome_produto.text = ''
+        self.ids.line_cad_agencia.text = ''
+        self.ids.line_cad_cod_barras.text = ''
         self.manager.current = 'view_sucesso'
         View_sucesso()
 
     def btn_voltar(self):
+        self.ids.line_cad_nome_produto.text = ''
+        self.ids.line_cad_agencia.text = ''
+        self.ids.line_cad_cod_barras.text = ''
         self.manager.current = 'view_principal'
 
 
@@ -259,6 +289,7 @@ class View_user_cadastro(Screen,FloatLayout):
             if self.name == usuario['name'] or self.name == "" or self.name == " " or self.name =="  " or self.name == "   ":
                 continua = False
         if continua == False:
+            self.ids.line_user_nome.text = ''
             self.manager.current = 'view_aviso_admin'  
             View_aviso_admin()
         else:
@@ -268,9 +299,11 @@ class View_user_cadastro(Screen,FloatLayout):
             if self.ag >= 1 and self.ag <= 31:
                 self.Ag = self.ag
             else:
+                self.ids.line_user_agencia.text = ''
                 self.manager.current = 'view_aviso_admin'  
                 View_aviso_admin()
         except:
+            self.ids.line_user_agencia.text = ''
             self.manager.current = 'view_aviso_admin'  
             View_aviso_admin()
         try:
@@ -278,17 +311,25 @@ class View_user_cadastro(Screen,FloatLayout):
             if len(self.password) >= 4:
                 self.Password = self.password   
             else:
+                self.ids.line_user_senha.text = ''
                 self.manager.current = 'view_aviso_admin'  
                 View_aviso_admin()
         except:
+            self.ids.line_user_senha.text = ''
             self.manager.current = 'view_aviso_admin'  
             View_aviso_admin()
             
         Banco_de_dados_salve_user(self.Name_user,self.Ag,self.Password)
+        self.ids.line_user_nome.text = ''
+        self.ids.line_user_agencia.text = ''
+        self.ids.line_user_senha.text = ''
         self.manager.current = 'view_sucesso'
         View_sucesso()
         
     def btn_voltar_tela(self):
+        self.ids.line_user_nome.text = ''
+        self.ids.line_user_agencia.text = ''
+        self.ids.line_user_senha.text = ''
         self.manager.current = 'view_principal'
 
 class View_consulta(Screen,FloatLayout,GridLayout,Label):
@@ -327,18 +368,21 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
                 self.lb_produto_ag.text = f"AGENCIA:  {str(produtos['ag'])}"
                 self.lb_produto_cod.text = f"COD_BARRA:  {produtos['cod_barra']}"
             elif line_procura == '':
+                self.ids.line_cons_procurar.text = ''
                 self.manager.current = 'view_aviso_admin'
                 View_aviso_admin()
             else:
                 continue
     
     def tela_voltar(self):
-        self.manager.current = 'view_principal'
+        self.ids.line_cons_procurar.text = ''
         self.lb_nome_produto.text = ''
         self.lb_produto_ag.text = ''
         self.lb_produto_cod.text = ''
+        self.manager.current = 'view_principal'
     
     def tela_salvar(self):
+        self.ids.line_cons_procurar.text = ''
         self.lb_nome_produto.text = ''
         self.lb_produto_ag.text = ''
         self.lb_produto_cod.text = ''
@@ -355,12 +399,14 @@ class View_consulta(Screen,FloatLayout,GridLayout,Label):
                 del banco[i]
                 with open(ROOT_FOLDER_PRODUTOS,'w', encoding='utf-8') as file:
                     json.dump(banco,file,ensure_ascii=False,indent=2)
+                self.ids.line_cons_procurar.text = ''
                 self.lb_nome_produto.text = ''
                 self.lb_produto_ag.text = ''
                 self.lb_produto_cod.text = ''
                 self.manager.current = 'view_sucesso'
                 View_sucesso()
             else:
+                self.ids.line_cons_procurar.text = ''
                 continue
 
 class View_consulta_user(Screen,FloatLayout):
@@ -395,20 +441,24 @@ class View_consulta_user(Screen,FloatLayout):
                 self.lb_produto_ag.text = f"AGENCIA:  {str(produtos['ag'])}"
                 self.lb_produto_cod.text = f"COD_BARRA:  {produtos['cod_barra']}"
             elif line_procura == '':
+                self.ids.line_cons_user_procurar.text = ''
                 self.manager.current = 'view_aviso'
                 View_aviso()
             else:
+                self.ids.line_cons_user_procurar.text = ''
                 self.manager.current = 'view_aviso'
                 View_aviso()
                 
     
     def tela_voltar(self):
-        self.manager.current = 'view_principal_user'
         self.lb_nome_produto.text = ''
         self.lb_produto_ag.text = ''
         self.lb_produto_cod.text = ''
+        self.ids.line_cons_user_procurar.text = ''
+        self.manager.current = 'view_principal_user'
     
     def tela_salvar(self):
+        self.ids.line_cons_user_procurar.text = ''
         self.lb_nome_produto.text = ''
         self.lb_produto_ag.text = ''
         self.lb_produto_cod.text = ''
@@ -458,6 +508,7 @@ class View_alterar_usuario(Screen,FloatLayout):
             if self.name == "" or self.name == " " or self.name =="  " or self.name == "   ":
                 continua = False
         if continua == False:
+            self.ids.btn_alterar_procurar = ''
             self.manager.current = 'view_aviso'  
             View_aviso()
         else:
@@ -467,9 +518,11 @@ class View_alterar_usuario(Screen,FloatLayout):
             if self.ag >= 1 and self.ag <= 31:
                 self.Ag = self.ag
             else:
+                self.ids.btn_alterar_procurar = ''
                 self.manager.current = 'view_aviso'  
                 View_aviso()
         except:
+            self.ids.btn_alterar_procurar = ''
             self.manager.current = 'view_aviso'  
             View_aviso()
         try:
@@ -477,6 +530,7 @@ class View_alterar_usuario(Screen,FloatLayout):
             if len(self.password) >= 4:
                 self.Password = self.password   
             else:
+                self.ids.btn_alterar_procurar = ''
                 self.manager.current = 'view_aviso'  
                 View_aviso()
         except:
@@ -487,6 +541,7 @@ class View_alterar_usuario(Screen,FloatLayout):
                 with open(ROOT_FOLDER, 'w', encoding='utf-8') as file:
                     json.dump(banco,file,ensure_ascii=False,indent=2)
         Banco_de_dados_salve_user(self.Name_user,self.Ag,self.Password)
+        self.ids.btn_alterar_procurar = ''
         self.manager.current = 'view_sucesso'
         View_sucesso()
 
@@ -533,6 +588,7 @@ class View_admin(Screen,GridLayout):
                 del banco[i]
                 with open(ROOT_FOLDER,'w', encoding='utf-8') as file:
                     json.dump(banco,file,ensure_ascii=False,indent=2)
+                self.ids.line_admin_procurar.text = ''
                 self.lb_nome.text = ''
                 self.lb_ag.text = ''
                 self.lb_senha.text = ''
@@ -543,13 +599,16 @@ class View_admin(Screen,GridLayout):
 
     
     def tela_alterar(self):
+        self.ids.line_admin_procurar.text = ''
         self.manager.current = 'view_altera_usuario'
     
     def tela_salvar(self):
+        self.ids.line_admin_procurar.text = ''
         self.manager.current = 'view_sucesso'
         View_sucesso()
     
     def tela_voltar(self):
+        self.ids.line_admin_procurar.text = ''
         self.manager.current = 'view_principal'
 
         
@@ -585,14 +644,17 @@ class View_conferencia(Screen,FloatLayout):
                 with open(ROOT_FOLDER_TEMP_PROCURA, 'w', encoding='utf-8') as file:
                     json.dump(banco,file,ensure_ascii=False,indent=2)
             else:
+                self.ids.conf_cod_barra.text = ''
                 continue
     
     def btn_salvar_temp(self):
+        self.ids.conf_cod_barra.text = ''
         self.manager.current = 'view_sucesso_user'
         View_sucesso()
     
     def finalizar(self):
         #Email_Automatico('Conferencia de Imobilizados',user_nome,user_agencia)
+        self.ids.conf_cod_barra.text = ''
         self.manager.current = 'view_sucesso_user'
         View_sucesso()
 
